@@ -1,5 +1,5 @@
 // ==========================================
-// Main Application Controller: ThreatIQ
+// Main Application Controller: threatIQ
 // ==========================================
 
 class ThreatIQApp {
@@ -24,6 +24,10 @@ class ThreatIQApp {
     if (window.ThreatMap) window.ThreatMap.init();
     if (window.CvssCalculator) window.CvssCalculator.init();
     if (window.DefenderChallenge) window.DefenderChallenge.init();
+    if (window.CyberWarGame) window.CyberWarGame.init();
+    if (window.SteganoLab) window.SteganoLab.init();
+    if (window.ThreatTriageAI) window.ThreatTriageAI.init();
+    if (window.UrlAnalyzer) window.UrlAnalyzer.init();
 
     if (window.lucide) window.lucide.createIcons();
   }
@@ -65,7 +69,7 @@ class ThreatIQApp {
       }
     });
 
-    // Refresh charts or canvases if entering specific tabs
+    // Refresh canvases/charts
     if (tabId === "sentinel-soc") {
       if (window.SentinelSOC && window.SentinelSOC.chart) {
         setTimeout(() => window.SentinelSOC.chart.resize(), 100);
@@ -148,23 +152,38 @@ class ThreatIQApp {
       response = `
         <div class="text-cyan-400 mb-1">AVAILABLE THREATIQ COMMANDS:</div>
         <div class="text-slate-300 space-y-0.5">
+          • <span class="text-yellow-400">battle</span>: Launch Red Team vs Blue Team Cyber War Game<br>
+          • <span class="text-yellow-400">triage</span>: Open AI Threat Intelligence Copilot<br>
+          • <span class="text-yellow-400">stego</span>: Open LSB Steganography Lab<br>
+          • <span class="text-yellow-400">url</span>: Open Malicious Link De-Cloaker<br>
           • <span class="text-yellow-400">challenge</span>: Open Defender Aptitude Challenge & Certificate<br>
-          • <span class="text-yellow-400">scan</span>: Run quick browser & environment security audit<br>
-          • <span class="text-yellow-400">playbook</span>: Switch to SentinelSOC incident response center<br>
+          • <span class="text-yellow-400">scan</span>: Run quick environment security audit<br>
+          • <span class="text-yellow-400">soc</span>: Switch to SentinelSOC & Global Threat Map<br>
           • <span class="text-yellow-400">pass</span>: Launch CipherFortress entropy engine<br>
           • <span class="text-yellow-400">phish</span>: Open Social Engineering Phishing Lab<br>
-          • <span class="text-yellow-400">cvss</span>: Open CVSS 3.1 Severity Calculator<br>
+          • <span class="text-yellow-400">cvss</span>: Open CVSS 3.1 Calculator<br>
           • <span class="text-yellow-400">exif</span>: Open EXIF Metadata Scrubber<br>
-          • <span class="text-yellow-400">rules</span>: Display official ethical guidelines<br>
           • <span class="text-yellow-400">clear</span>: Clear terminal buffer
         </div>
       `;
     } else if (cmd === "scan") {
       response = `<span class="text-emerald-400">[AUDIT COMPLETE] Screen: ${window.screen.width}x${window.screen.height} | Timezone: ${Intl.DateTimeFormat().resolvedOptions().timeZone} | Cores: ${navigator.hardwareConcurrency || 4}</span>`;
+    } else if (cmd === "battle" || cmd === "wargame") {
+      this.switchTab("wargame");
+      response = `<span class="text-cyan-400">Navigating to Red Team vs Blue Team Arena...</span>`;
+    } else if (cmd === "triage" || cmd === "ai") {
+      this.switchTab("ai-triage");
+      response = `<span class="text-cyan-400">Navigating to AI Threat Intelligence Copilot...</span>`;
+    } else if (cmd === "stego") {
+      this.switchTab("steganography");
+      response = `<span class="text-cyan-400">Navigating to Steganography Lab...</span>`;
+    } else if (cmd === "url") {
+      this.switchTab("url-analyzer");
+      response = `<span class="text-cyan-400">Navigating to Malicious URL De-Cloaker...</span>`;
     } else if (cmd === "challenge" || cmd === "cert") {
       this.switchTab("challenge");
       response = `<span class="text-cyan-400">Navigating to Defender Challenge & Certificate...</span>`;
-    } else if (cmd === "playbook" || cmd === "soc") {
+    } else if (cmd === "soc" || cmd === "playbook") {
       this.switchTab("sentinel-soc");
       response = `<span class="text-cyan-400">Navigating to SentinelSOC...</span>`;
     } else if (cmd === "phish") {
@@ -179,8 +198,6 @@ class ThreatIQApp {
     } else if (cmd === "cvss") {
       this.switchTab("disclose-safe");
       response = `<span class="text-cyan-400">Navigating to DiscloseSafe CVSS Calculator...</span>`;
-    } else if (cmd === "rules") {
-      response = `<span class="text-slate-300">ThreatIQ Code of Ethics: Safe Harbor compliant. All demonstrations are educational, defensive, and sanitized. Never compromise unauthorized infrastructure.</span>`;
     } else if (cmd === "clear") {
       container.innerHTML = "";
       return;

@@ -57,7 +57,7 @@
         <div>
           <div class="flex items-center space-x-2">
             <span class="font-bold text-lg tracking-wider text-white">threat<span class="text-cyan-400">IQ</span></span>
-            <span class="px-2 py-0.5 rounded text-[10px] font-mono bg-cyan-950/80 text-cyan-300 border border-cyan-800">v2.6 SEC-EDITION</span>
+            <span class="px-2 py-0.5 rounded text-[10px] font-mono bg-cyan-950/80 text-cyan-300 border border-cyan-800">v3.0 AI-EDITION</span>
           </div>
           <div class="text-[10px] font-mono text-slate-500 flex items-center space-x-2">
             <span class="inline-block w-1.5 h-1.5 rounded-full bg-emerald-400 animate-ping"></span>
@@ -83,15 +83,27 @@
 
     </div>
 
-    <!-- Navigation Tabs -->
+    <!-- Navigation Tabs (Expanded with All 10 Power Tools) -->
     <nav class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 border-t border-slate-800/80 flex space-x-1 sm:space-x-2 overflow-x-auto py-2 text-xs font-mono">
       <button data-nav-target="overview" class="px-3 py-1.5 rounded-md border text-cyan-400 border-cyan-400 bg-cyan-950/30 flex items-center space-x-1.5 transition whitespace-nowrap">
         <i data-lucide="layout-dashboard" class="w-3.5 h-3.5"></i>
-        <span>Overview & Hub</span>
+        <span>Overview</span>
+      </button>
+      <button data-nav-target="wargame" class="px-3 py-1.5 rounded-md border border-rose-500/50 text-rose-400 hover:bg-rose-950/40 flex items-center space-x-1.5 transition whitespace-nowrap shadow-sm shadow-rose-500/20">
+        <i data-lucide="swords" class="w-3.5 h-3.5 text-rose-400"></i>
+        <span>⚔️ Cyber War Game</span>
+      </button>
+      <button data-nav-target="ai-triage" class="px-3 py-1.5 rounded-md border border-cyan-500/50 text-cyan-300 hover:bg-cyan-950/40 flex items-center space-x-1.5 transition whitespace-nowrap">
+        <i data-lucide="bot" class="w-3.5 h-3.5 text-cyan-400"></i>
+        <span>🤖 AI Threat Copilot</span>
       </button>
       <button data-nav-target="phish-guard" class="px-3 py-1.5 rounded-md border border-transparent text-slate-400 hover:text-slate-200 hover:bg-slate-900/60 flex items-center space-x-1.5 transition whitespace-nowrap">
         <i data-lucide="mail-warning" class="w-3.5 h-3.5"></i>
         <span>🎣 PhishGuard Lab</span>
+      </button>
+      <button data-nav-target="url-analyzer" class="px-3 py-1.5 rounded-md border border-transparent text-slate-400 hover:text-slate-200 hover:bg-slate-900/60 flex items-center space-x-1.5 transition whitespace-nowrap">
+        <i data-lucide="link" class="w-3.5 h-3.5"></i>
+        <span>🔗 URL De-Cloaker</span>
       </button>
       <button data-nav-target="cipher-fortress" class="px-3 py-1.5 rounded-md border border-transparent text-slate-400 hover:text-slate-200 hover:bg-slate-900/60 flex items-center space-x-1.5 transition whitespace-nowrap">
         <i data-lucide="key-round" class="w-3.5 h-3.5"></i>
@@ -101,9 +113,13 @@
         <i data-lucide="eye-off" class="w-3.5 h-3.5"></i>
         <span>🕵️ PrivacyShield (EXIF)</span>
       </button>
+      <button data-nav-target="steganography" class="px-3 py-1.5 rounded-md border border-transparent text-slate-400 hover:text-slate-200 hover:bg-slate-900/60 flex items-center space-x-1.5 transition whitespace-nowrap">
+        <i data-lucide="image" class="w-3.5 h-3.5"></i>
+        <span>🖼️ Steganography Lab</span>
+      </button>
       <button data-nav-target="sentinel-soc" class="px-3 py-1.5 rounded-md border border-transparent text-slate-400 hover:text-slate-200 hover:bg-slate-900/60 flex items-center space-x-1.5 transition whitespace-nowrap">
         <i data-lucide="activity" class="w-3.5 h-3.5"></i>
-        <span>🚨 SentinelSOC & Threat Map</span>
+        <span>🚨 SentinelSOC & Map</span>
       </button>
       <button data-nav-target="disclose-safe" class="px-3 py-1.5 rounded-md border border-transparent text-slate-400 hover:text-slate-200 hover:bg-slate-900/60 flex items-center space-x-1.5 transition whitespace-nowrap">
         <i data-lucide="file-code" class="w-3.5 h-3.5"></i>
@@ -131,24 +147,24 @@
             <span>CATEGORY: CYBERSECURITY, PRIVACY & ETHICAL HACKING</span>
           </div>
           <h1 class="text-3xl sm:text-5xl font-extrabold tracking-tight text-white leading-tight">
-            Safer Digital Behavior Through <span class="text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 via-sky-300 to-emerald-400">Interactive Cyber Intelligence</span>.
+            Safer Digital Behavior Through <span class="text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 via-sky-300 to-emerald-400">AI Cyber Intelligence</span>.
           </h1>
           <p class="text-slate-300 text-sm sm:text-base leading-relaxed">
-            ThreatIQ empowers everyday users, developers, and ethical researchers to inspect threats before they strike. Simulate social engineering traps, analyze password entropy against GPU clusters, scrub location-exposing metadata from photos, and respond to real-time security operations center incidents.
+            threatIQ is an AI-powered, 100% client-side ethical cyber defense operating platform. Simulate Red Team vs Blue Team cyber wars, analyze live log payloads with our AI Copilot, inspect lookalike phishing domains, extract hidden EXIF geotags from photos, and decode steganographic payloads.
           </p>
 
           <div class="pt-2 flex flex-wrap items-center gap-3">
-            <button onclick="window.ThreatIQ.switchTab('phish-guard')" class="px-5 py-2.5 rounded-lg bg-cyan-600 hover:bg-cyan-500 text-white font-mono text-xs font-bold flex items-center gap-2 shadow-lg shadow-cyan-600/30 transition">
-              <i data-lucide="play" class="w-4 h-4"></i>
-              <span>Launch PhishGuard Simulator</span>
+            <button onclick="window.ThreatIQ.switchTab('wargame')" class="px-5 py-2.5 rounded-lg bg-rose-600 hover:bg-rose-500 text-white font-mono text-xs font-bold flex items-center gap-2 shadow-lg shadow-rose-600/30 transition">
+              <i data-lucide="swords" class="w-4 h-4"></i>
+              <span>Play Cyber War Game</span>
+            </button>
+            <button onclick="window.ThreatIQ.switchTab('ai-triage')" class="px-5 py-2.5 rounded-lg bg-cyan-600 hover:bg-cyan-500 text-white font-mono text-xs font-bold flex items-center gap-2 shadow-lg shadow-cyan-600/30 transition">
+              <i data-lucide="bot" class="w-4 h-4"></i>
+              <span>Launch AI Threat Copilot</span>
             </button>
             <button onclick="window.ThreatIQ.switchTab('challenge')" class="px-5 py-2.5 rounded-lg bg-emerald-600 hover:bg-emerald-500 text-white font-mono text-xs font-bold flex items-center gap-2 shadow-lg shadow-emerald-600/30 transition">
               <i data-lucide="award" class="w-4 h-4"></i>
-              <span>Take Defender Challenge & Earn Cert</span>
-            </button>
-            <button onclick="window.ThreatIQ.switchTab('sentinel-soc')" class="px-5 py-2.5 rounded-lg bg-slate-900 hover:bg-slate-800 text-slate-200 border border-slate-700 font-mono text-xs flex items-center gap-2 transition">
-              <i data-lucide="terminal" class="w-4 h-4"></i>
-              <span>SentinelSOC Live Console</span>
+              <span>Defender Challenge & Cert</span>
             </button>
           </div>
         </div>
@@ -160,8 +176,8 @@
             <div id="threats-blocked-count" class="text-xl font-bold font-mono text-cyan-400 mt-1">142,890</div>
           </div>
           <div class="p-3 bg-slate-950/60 rounded-lg border border-slate-800/80">
-            <div class="text-[11px] font-mono text-slate-500 uppercase">Working Tools</div>
-            <div class="text-xl font-bold font-mono text-emerald-400 mt-1">6 Interactive Labs</div>
+            <div class="text-[11px] font-mono text-slate-500 uppercase">Interactive Labs</div>
+            <div class="text-xl font-bold font-mono text-emerald-400 mt-1">10 Power Tools</div>
           </div>
           <div class="p-3 bg-slate-950/60 rounded-lg border border-slate-800/80">
             <div class="text-[11px] font-mono text-slate-500 uppercase">Client-Side Privacy</div>
@@ -174,10 +190,40 @@
         </div>
       </div>
 
-      <!-- Feature Grid: 6 Core Pillars -->
+      <!-- Feature Grid: 10 Core Pillars -->
       <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
         
-        <!-- Card 1 -->
+        <!-- Card 1: War Game -->
+        <div onclick="window.ThreatIQ.switchTab('wargame')" class="glass-panel p-6 rounded-xl hover:border-rose-400/50 transition cursor-pointer group">
+          <div class="w-10 h-10 rounded-lg bg-rose-950 text-rose-400 border border-rose-800 flex items-center justify-center mb-4 group-hover:scale-105 transition">
+            <i data-lucide="swords" class="w-5 h-5"></i>
+          </div>
+          <h3 class="text-base font-bold text-white group-hover:text-rose-300 transition">Cyber War Game (Battle Arena)</h3>
+          <p class="text-xs text-slate-400 mt-2 leading-relaxed">
+            Fast-paced simulation: Red Team fires incoming DDoS, SQLi, and Ransomware attack waves while you activate Blue Team countermeasures before server collapse.
+          </p>
+          <div class="mt-4 text-xs font-mono text-rose-400 flex items-center gap-1">
+            <span>Enter Battle Arena</span>
+            <i data-lucide="arrow-right" class="w-3.5 h-3.5 group-hover:translate-x-1 transition"></i>
+          </div>
+        </div>
+
+        <!-- Card 2: AI Threat Triage -->
+        <div onclick="window.ThreatIQ.switchTab('ai-triage')" class="glass-panel p-6 rounded-xl hover:border-cyan-400/50 transition cursor-pointer group">
+          <div class="w-10 h-10 rounded-lg bg-cyan-950 text-cyan-400 border border-cyan-800 flex items-center justify-center mb-4 group-hover:scale-105 transition">
+            <i data-lucide="bot" class="w-5 h-5"></i>
+          </div>
+          <h3 class="text-base font-bold text-white group-hover:text-cyan-300 transition">AI Threat Copilot & Log Triage</h3>
+          <p class="text-xs text-slate-400 mt-2 leading-relaxed">
+            Paste raw shell scripts, SQL queries, or access logs to receive instant MITRE ATT&CK mapping, CWE classification, risk scoring, and drop-in remediation code.
+          </p>
+          <div class="mt-4 text-xs font-mono text-cyan-400 flex items-center gap-1">
+            <span>Triage Payloads</span>
+            <i data-lucide="arrow-right" class="w-3.5 h-3.5 group-hover:translate-x-1 transition"></i>
+          </div>
+        </div>
+
+        <!-- Card 3: PhishGuard -->
         <div onclick="window.ThreatIQ.switchTab('phish-guard')" class="glass-panel p-6 rounded-xl hover:border-cyan-400/50 transition cursor-pointer group">
           <div class="w-10 h-10 rounded-lg bg-cyan-950 text-cyan-400 border border-cyan-800 flex items-center justify-center mb-4 group-hover:scale-105 transition">
             <i data-lucide="mail-warning" class="w-5 h-5"></i>
@@ -192,62 +238,32 @@
           </div>
         </div>
 
-        <!-- Card 2 -->
-        <div onclick="window.ThreatIQ.switchTab('cipher-fortress')" class="glass-panel p-6 rounded-xl hover:border-cyan-400/50 transition cursor-pointer group">
+        <!-- Card 4: Steganography -->
+        <div onclick="window.ThreatIQ.switchTab('steganography')" class="glass-panel p-6 rounded-xl hover:border-emerald-400/50 transition cursor-pointer group">
           <div class="w-10 h-10 rounded-lg bg-emerald-950 text-emerald-400 border border-emerald-800 flex items-center justify-center mb-4 group-hover:scale-105 transition">
-            <i data-lucide="key-round" class="w-5 h-5"></i>
+            <i data-lucide="image" class="w-5 h-5"></i>
           </div>
-          <h3 class="text-base font-bold text-white group-hover:text-emerald-300 transition">CipherFortress & Web Crypto</h3>
+          <h3 class="text-base font-bold text-white group-hover:text-emerald-300 transition">Image Steganography (LSB)</h3>
           <p class="text-xs text-slate-400 mt-2 leading-relaxed">
-            Shannon entropy calculation, GPU cluster crack times, Diceware passphrase generator, and native SHA-256 Avalanche Effect visualizer.
+            Conceal confidential messages into raw image pixel bits (Least Significant Bit manipulation) and extract hidden payloads from encoded PNGs.
           </p>
           <div class="mt-4 text-xs font-mono text-emerald-400 flex items-center gap-1">
-            <span>Audit Password Entropy</span>
+            <span>Encode / Decode Secrets</span>
             <i data-lucide="arrow-right" class="w-3.5 h-3.5 group-hover:translate-x-1 transition"></i>
           </div>
         </div>
 
-        <!-- Card 3 -->
-        <div onclick="window.ThreatIQ.switchTab('privacy-shield')" class="glass-panel p-6 rounded-xl hover:border-cyan-400/50 transition cursor-pointer group">
-          <div class="w-10 h-10 rounded-lg bg-sky-950 text-sky-400 border border-sky-800 flex items-center justify-center mb-4 group-hover:scale-105 transition">
-            <i data-lucide="eye-off" class="w-5 h-5"></i>
-          </div>
-          <h3 class="text-base font-bold text-white group-hover:text-sky-300 transition">EXIF Scrubber & Browser Audit</h3>
-          <p class="text-xs text-slate-400 mt-2 leading-relaxed">
-            Drag-and-drop client-side tool to expose hidden GPS tags and camera serials in photos, with a 1-click sanitizer and browser fingerprint scanner.
-          </p>
-          <div class="mt-4 text-xs font-mono text-sky-400 flex items-center gap-1">
-            <span>Scrub Photo Geotags</span>
-            <i data-lucide="arrow-right" class="w-3.5 h-3.5 group-hover:translate-x-1 transition"></i>
-          </div>
-        </div>
-
-        <!-- Card 4 -->
-        <div onclick="window.ThreatIQ.switchTab('sentinel-soc')" class="glass-panel p-6 rounded-xl hover:border-cyan-400/50 transition cursor-pointer group">
-          <div class="w-10 h-10 rounded-lg bg-rose-950 text-rose-400 border border-rose-800 flex items-center justify-center mb-4 group-hover:scale-105 transition">
-            <i data-lucide="activity" class="w-5 h-5"></i>
-          </div>
-          <h3 class="text-base font-bold text-white group-hover:text-rose-300 transition">SentinelSOC & Global Threat Map</h3>
-          <p class="text-xs text-slate-400 mt-2 leading-relaxed">
-            Animated Canvas world threat arc visualizer, live incident feed (Ransomware, L7 DDoS, SQLi), and interactive tactical response playbooks.
-          </p>
-          <div class="mt-4 text-xs font-mono text-rose-400 flex items-center gap-1">
-            <span>Access SOC Console</span>
-            <i data-lucide="arrow-right" class="w-3.5 h-3.5 group-hover:translate-x-1 transition"></i>
-          </div>
-        </div>
-
-        <!-- Card 5 -->
-        <div onclick="window.ThreatIQ.switchTab('disclose-safe')" class="glass-panel p-6 rounded-xl hover:border-cyan-400/50 transition cursor-pointer group">
+        <!-- Card 5: URL Analyzer -->
+        <div onclick="window.ThreatIQ.switchTab('url-analyzer')" class="glass-panel p-6 rounded-xl hover:border-amber-400/50 transition cursor-pointer group">
           <div class="w-10 h-10 rounded-lg bg-amber-950 text-amber-400 border border-amber-800 flex items-center justify-center mb-4 group-hover:scale-105 transition">
-            <i data-lucide="file-code" class="w-5 h-5"></i>
+            <i data-lucide="link" class="w-5 h-5"></i>
           </div>
-          <h3 class="text-base font-bold text-white group-hover:text-amber-300 transition">DiscloseSafe CVSS v3.1 Engine</h3>
+          <h3 class="text-base font-bold text-white group-hover:text-amber-300 transition">URL & Homoglyph De-Cloaker</h3>
           <p class="text-xs text-slate-400 mt-2 leading-relaxed">
-            Interactive CVSS v3.1 severity calculator with official FIRST.org weighting, vector string generation, and safe-harbor disclosure report exporter.
+            Detects IDN homoglyphs, non-ASCII Punycode disguises, high-risk TLDs, open redirects, and nested subdomain traps before you click.
           </p>
           <div class="mt-4 text-xs font-mono text-amber-400 flex items-center gap-1">
-            <span>Calculate CVSS Score</span>
+            <span>Scan Link Deception</span>
             <i data-lucide="arrow-right" class="w-3.5 h-3.5 group-hover:translate-x-1 transition"></i>
           </div>
         </div>
@@ -263,7 +279,7 @@
               <span class="text-[10px] font-mono text-slate-500">TYPE 'HELP'</span>
             </div>
             <div id="terminal-history" class="h-28 overflow-y-auto space-y-1 pr-1 font-mono text-xs text-slate-400">
-              <div class="text-slate-500">// ThreatIQ CLI initialized. Ready for command input.</div>
+              <div class="text-slate-500">// threatIQ CLI initialized. Ready for command input.</div>
             </div>
           </div>
           <div class="mt-3 flex items-center gap-2 border-t border-slate-800 pt-2">
@@ -271,7 +287,7 @@
             <input 
               id="terminal-cmd-input" 
               type="text" 
-              placeholder="type 'help', 'scan', 'challenge', 'soc'..."
+              placeholder="type 'help', 'battle', 'triage', 'stego'..."
               class="w-full bg-transparent text-xs font-mono text-white focus:outline-none placeholder-slate-600"
             />
           </div>
@@ -288,7 +304,7 @@
           <div>
             <h4 class="text-sm font-bold text-white">Ethical Hacking & Safe Harbor Commitment</h4>
             <p class="text-xs text-slate-400 mt-0.5">
-              All tools and simulations in ThreatIQ are strictly educational and defensive. Designed in compliance with ISO/IEC 29147 responsible disclosure standards.
+              All tools and simulations in threatIQ are strictly educational, defensive, and sanitized. Built in compliance with ISO/IEC 29147 responsible disclosure standards.
             </p>
           </div>
         </div>
@@ -299,7 +315,174 @@
 
     </section>
 
-    <!-- ================= TAB 2: PHISHGUARD LAB ================= -->
+    <!-- ================= TAB: CYBER WAR GAME ================= -->
+    <section id="tab-wargame" class="tab-pane hidden space-y-6">
+      <div class="border-b border-slate-800 pb-4">
+        <h2 class="text-2xl font-bold text-white flex items-center gap-2">
+          <span>⚔️ Red Team vs Blue Team — Live Cyber War Game</span>
+          <span class="text-xs font-mono px-2 py-0.5 rounded bg-rose-950 text-rose-300 border border-rose-800">REAL-TIME SIMULATION</span>
+        </h2>
+        <p class="text-xs text-slate-400 mt-1">Survive 5 waves of incoming cyber attacks. Analyze attack vectors and trigger the correct Blue Team countermeasure before server health drops to 0%.</p>
+      </div>
+
+      <div id="wargame-container"></div>
+    </section>
+
+    <!-- ================= TAB: AI THREAT TRIAGE ================= -->
+    <section id="tab-ai-triage" class="tab-pane hidden space-y-6">
+      <div class="border-b border-slate-800 pb-4">
+        <h2 class="text-2xl font-bold text-white flex items-center gap-2">
+          <span>🤖 AI Threat Copilot & Payload Triage</span>
+          <span class="text-xs font-mono px-2 py-0.5 rounded bg-cyan-950 text-cyan-300 border border-cyan-800">CWE / MITRE MAPPING</span>
+        </h2>
+        <p class="text-xs text-slate-400 mt-1">Paste any suspicious URL, raw server log, SQL query, or shell snippet to extract IOCs, risk ratings, and drop-in defensive code.</p>
+      </div>
+
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-6">
+        <!-- Input Column -->
+        <div class="lg:col-span-6 space-y-4">
+          <div class="p-6 rounded-xl border border-slate-800 bg-slate-900/80 space-y-4">
+            <div>
+              <label class="block text-xs font-mono uppercase text-slate-400 font-bold mb-2">Paste Raw Log / Query / Shell Command:</label>
+              <textarea 
+                id="triage-input" 
+                rows="5" 
+                placeholder="Paste suspicious code or log here..." 
+                class="w-full p-3 bg-slate-950 border border-slate-700 rounded-lg text-xs font-mono text-cyan-300 focus:outline-none focus:border-cyan-400"
+              ></textarea>
+            </div>
+
+            <!-- Quick Presets -->
+            <div>
+              <span class="block text-[11px] font-mono text-slate-500 uppercase mb-2">Or Test Real Attack Presets:</span>
+              <div class="flex flex-wrap gap-2 text-xs font-mono">
+                <button onclick="window.ThreatTriageAI.loadPreset('log4j')" class="px-2.5 py-1 bg-slate-800 hover:bg-slate-700 text-rose-300 rounded border border-rose-800/40">Log4Shell JNDI</button>
+                <button onclick="window.ThreatTriageAI.loadPreset('sqli')" class="px-2.5 py-1 bg-slate-800 hover:bg-slate-700 text-amber-300 rounded border border-amber-800/40">Union SQLi</button>
+                <button onclick="window.ThreatTriageAI.loadPreset('xss')" class="px-2.5 py-1 bg-slate-800 hover:bg-slate-700 text-blue-300 rounded border border-blue-800/40">Cookie XSS</button>
+                <button onclick="window.ThreatTriageAI.loadPreset('cmdi')" class="px-2.5 py-1 bg-slate-800 hover:bg-slate-700 text-emerald-300 rounded border border-emerald-800/40">Command Pipe</button>
+                <button onclick="window.ThreatTriageAI.loadPreset('lfi')" class="px-2.5 py-1 bg-slate-800 hover:bg-slate-700 text-purple-300 rounded border border-purple-800/40">Path Traversal</button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Output Column -->
+        <div class="lg:col-span-6">
+          <div id="triage-output-container"></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================= TAB: URL DE-CLOAKER ================= -->
+    <section id="tab-url-analyzer" class="tab-pane hidden space-y-6">
+      <div class="border-b border-slate-800 pb-4">
+        <h2 class="text-2xl font-bold text-white flex items-center gap-2">
+          <span>🔗 Malicious URL & Homoglyph De-Cloaker</span>
+          <span class="text-xs font-mono px-2 py-0.5 rounded bg-amber-950 text-amber-300 border border-amber-800">PUNYCODE INSPECTOR</span>
+        </h2>
+        <p class="text-xs text-slate-400 mt-1">Detects non-ASCII homoglyphs, open redirects, disposable top-level domains, and nested brand impersonation.</p>
+      </div>
+
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-6">
+        <div class="lg:col-span-6 space-y-4">
+          <div class="p-6 rounded-xl border border-slate-800 bg-slate-900/80 space-y-4">
+            <div>
+              <label class="block text-xs font-mono uppercase text-slate-400 font-bold mb-2">Enter Suspicious URL to Audit:</label>
+              <input 
+                id="url-analyzer-input" 
+                type="text" 
+                placeholder="https://pаypal.com/signin" 
+                class="w-full px-4 py-3 bg-slate-950 border border-slate-700 rounded-lg text-xs font-mono text-amber-300 focus:outline-none focus:border-cyan-400"
+              />
+            </div>
+
+            <div>
+              <span class="block text-[11px] font-mono text-slate-500 uppercase mb-2">Test Known Phishing URL Techniques:</span>
+              <div class="flex flex-wrap gap-2 text-xs font-mono">
+                <button onclick="window.UrlAnalyzer.loadPreset('https://pаypal.com/verify?redirect=http://evil-c2.xyz/auth')" class="px-2.5 py-1 bg-slate-800 hover:bg-slate-700 text-rose-300 rounded border border-rose-800/40">Cyrillic Homoglyph</button>
+                <button onclick="window.UrlAnalyzer.loadPreset('http://192.168.1.105:8080/secure/login')" class="px-2.5 py-1 bg-slate-800 hover:bg-slate-700 text-amber-300 rounded border border-amber-800/40">Raw IP Host</button>
+                <button onclick="window.UrlAnalyzer.loadPreset('https://microsoft.com.auth-token.support-desk.top/mfa')" class="px-2.5 py-1 bg-slate-800 hover:bg-slate-700 text-cyan-300 rounded border border-cyan-800/40">Subdomain Nesting</button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="lg:col-span-6">
+          <div id="url-analyzer-output"></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================= TAB: STEGANOGRAPHY ================= -->
+    <section id="tab-steganography" class="tab-pane hidden space-y-6">
+      <div class="border-b border-slate-800 pb-4">
+        <h2 class="text-2xl font-bold text-white flex items-center gap-2">
+          <span>🖼️ Image Steganography Lab — LSB Data Hiding</span>
+          <span class="text-xs font-mono px-2 py-0.5 rounded bg-emerald-950 text-emerald-300 border border-emerald-800">CLIENT-SIDE PIXEL MANIPULATION</span>
+        </h2>
+        <p class="text-xs text-slate-400 mt-1">Conceal confidential messages into raw pixel least-significant bits (LSB) without visual distortion, and extract secrets from encoded PNGs.</p>
+      </div>
+
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-6">
+        <!-- Encoder Column -->
+        <div class="lg:col-span-6 space-y-4">
+          <div class="p-6 rounded-xl border border-slate-800 bg-slate-900/80 space-y-4">
+            <h3 class="text-sm font-bold text-white font-mono flex items-center gap-2">
+              <i data-lucide="lock" class="w-4 h-4 text-emerald-400"></i>
+              <span>1. ENCODE SECRET INTO IMAGE</span>
+            </h3>
+
+            <div>
+              <label class="block text-xs font-mono text-slate-400 mb-1">Secret Message to Hide:</label>
+              <input id="stego-secret-input" type="text" value="threatIQ_Classified_Credential_2026" class="w-full px-3 py-2 bg-slate-950 border border-slate-700 rounded text-xs font-mono text-emerald-400 focus:outline-none focus:border-cyan-400" />
+            </div>
+
+            <div class="space-y-2">
+              <label class="block text-xs font-mono text-slate-400">Carrier Image (PNG/JPEG):</label>
+              <input id="stego-file-input" type="file" accept="image/png,image/jpeg" class="w-full text-xs font-mono text-slate-400 file:mr-2 file:py-1 file:px-3 file:rounded file:border-0 file:text-xs file:bg-slate-800 file:text-slate-200" />
+              <button onclick="window.SteganoLab.loadSampleCanvas()" class="text-xs font-mono text-cyan-400 hover:underline block">+ Or Generate Sample Gradient Carrier</button>
+            </div>
+
+            <div id="stego-preview-container"></div>
+
+            <button onclick="window.SteganoLab.encodeSecret()" class="w-full py-2.5 bg-emerald-600 hover:bg-emerald-500 text-white rounded-lg font-mono text-xs font-bold transition flex items-center justify-center gap-2 shadow-lg shadow-emerald-600/30">
+              <i data-lucide="download" class="w-4 h-4"></i>
+              <span>Encode Secret & Download Stego PNG</span>
+            </button>
+            <div id="stego-status" class="text-xs font-mono text-center"></div>
+          </div>
+        </div>
+
+        <!-- Decoder Column -->
+        <div class="lg:col-span-6 space-y-4">
+          <div class="p-6 rounded-xl border border-slate-800 bg-slate-900/80 space-y-4">
+            <h3 class="text-sm font-bold text-white font-mono flex items-center gap-2">
+              <i data-lucide="unlock" class="w-4 h-4 text-cyan-400"></i>
+              <span>2. EXTRACT SECRET FROM ENCODED IMAGE</span>
+            </h3>
+
+            <div>
+              <label class="block text-xs font-mono text-slate-400 mb-2">Upload Encoded Steganographic Image:</label>
+              <input id="stego-decode-file" type="file" accept="image/png" class="w-full text-xs font-mono text-slate-400 file:mr-2 file:py-1 file:px-3 file:rounded file:border-0 file:text-xs file:bg-slate-800 file:text-slate-200" />
+            </div>
+
+            <button onclick="window.SteganoLab.decodeSecret()" class="w-full py-2.5 bg-cyan-600 hover:bg-cyan-500 text-white rounded-lg font-mono text-xs font-bold transition flex items-center justify-center gap-2 shadow-lg shadow-cyan-600/30">
+              <i data-lucide="eye" class="w-4 h-4"></i>
+              <span>Extract & Decrypt Hidden LSB Message</span>
+            </button>
+
+            <div class="p-4 bg-slate-950 rounded-lg border border-slate-800">
+              <span class="text-slate-500 block text-[10px] font-mono mb-1">REVEALED SECRET PAYLOAD:</span>
+              <div id="stego-decoded-output" class="text-xs font-mono text-emerald-400 break-all select-all font-bold">
+                [Awaiting encoded carrier file...]
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================= TAB: PHISHGUARD LAB ================= -->
     <section id="tab-phish-guard" class="tab-pane hidden space-y-6">
       <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2 border-b border-slate-800 pb-4">
         <div>
@@ -312,17 +495,14 @@
       </div>
 
       <div class="grid grid-cols-1 lg:grid-cols-12 gap-6">
-        <!-- Left Column: Scenario Selector & Email View -->
         <div class="lg:col-span-8 space-y-4">
           <div class="space-y-2">
             <label class="text-xs font-mono uppercase text-slate-400 font-bold block">1. Select Simulated Attack Scenario:</label>
             <div id="phish-scenarios-list" class="grid grid-cols-1 sm:grid-cols-3 gap-2"></div>
           </div>
-
           <div id="phish-email-view" class="mt-4"></div>
         </div>
 
-        <!-- Right Column: Deep Threat Audit & Red Flags -->
         <div class="lg:col-span-4 space-y-4">
           <div class="p-4 rounded-xl border border-slate-800 bg-slate-900/60">
             <h3 class="text-sm font-bold text-white font-mono flex items-center gap-2 mb-3">
@@ -335,7 +515,7 @@
       </div>
     </section>
 
-    <!-- ================= TAB 3: CIPHERFORTRESS ================= -->
+    <!-- ================= TAB: CIPHERFORTRESS ================= -->
     <section id="tab-cipher-fortress" class="tab-pane hidden space-y-6">
       <div class="border-b border-slate-800 pb-4">
         <h2 class="text-2xl font-bold text-white flex items-center gap-2">
@@ -346,22 +526,18 @@
       </div>
 
       <div class="grid grid-cols-1 lg:grid-cols-12 gap-6">
-        <!-- Left: Password Input & Analysis -->
         <div class="lg:col-span-7 space-y-5">
           <div class="p-6 rounded-xl border border-slate-800 bg-slate-900/80 space-y-4 shadow-xl">
             <div>
               <label class="block text-xs font-mono uppercase tracking-wider text-slate-400 mb-2 font-bold">Test Password or Passphrase Live:</label>
-              <div class="relative">
-                <input 
-                  id="pwd-input" 
-                  type="text" 
-                  placeholder="Enter sample password (e.g. Tr0ub4dor&3 or correct-horse-battery-staple)" 
-                  class="w-full px-4 py-3 bg-slate-950 border border-slate-700 rounded-lg text-sm font-mono text-cyan-300 focus:outline-none focus:border-cyan-400 transition"
-                />
-              </div>
+              <input 
+                id="pwd-input" 
+                type="text" 
+                placeholder="Enter sample password (e.g. Tr0ub4dor&3 or correct-horse-battery-staple)" 
+                class="w-full px-4 py-3 bg-slate-950 border border-slate-700 rounded-lg text-sm font-mono text-cyan-300 focus:outline-none focus:border-cyan-400 transition"
+              />
             </div>
 
-            <!-- Entropy Meter Bar -->
             <div class="space-y-1.5">
               <div class="flex items-center justify-between text-xs font-mono">
                 <span class="text-slate-400">SHANNON ENTROPY: <strong id="entropy-bits" class="text-cyan-400">0 bits</strong></span>
@@ -372,7 +548,6 @@
               </div>
             </div>
 
-            <!-- Crack-Time Hardware Benchmark Cards -->
             <div class="pt-2">
               <span class="block text-xs font-mono uppercase text-slate-400 mb-2 font-bold">Estimated Time to Crack (Brute-Force & Dictionaries):</span>
               <div class="grid grid-cols-1 sm:grid-cols-3 gap-3">
@@ -394,7 +569,6 @@
               </div>
             </div>
 
-            <!-- Vulnerability Pattern Warnings -->
             <div class="p-3 bg-slate-950 rounded-lg border border-slate-800">
               <span class="text-[11px] font-mono uppercase tracking-wider text-slate-500 block mb-1">Pattern & Dictionary Weakness Check:</span>
               <div id="pattern-warnings" class="space-y-1">
@@ -403,7 +577,6 @@
             </div>
           </div>
 
-          <!-- Web Crypto SHA-256 Avalanche Lab -->
           <div class="p-6 rounded-xl border border-slate-800 bg-slate-900/80 space-y-3">
             <div class="flex items-center justify-between pb-2 border-b border-slate-800">
               <h3 class="text-sm font-bold text-white font-mono flex items-center gap-2">
@@ -427,7 +600,6 @@
           </div>
         </div>
 
-        <!-- Right: Cryptographic Passphrase Generator & Passkeys -->
         <div class="lg:col-span-5 space-y-5">
           <div class="p-6 rounded-xl border border-slate-800 bg-slate-900/80 space-y-4">
             <div class="flex items-center justify-between pb-2 border-b border-slate-800">
@@ -459,21 +631,20 @@
             </div>
           </div>
 
-          <!-- Passkey vs Password Explainer -->
           <div class="p-5 rounded-xl border border-cyan-500/30 bg-cyan-950/20 text-xs space-y-2">
             <div class="flex items-center gap-2 text-cyan-400 font-mono font-bold">
               <i data-lucide="fingerprint" class="w-4 h-4"></i>
               <span>WHY MODERN SECURITY PREFERS PASSKEYS (FIDO2 / WEBAUTHN)</span>
             </div>
             <p class="text-slate-300 leading-relaxed">
-              Traditional passwords require transmitting a shared secret to a remote database—vulnerable to credential stuffing, data breaches, and phishing. Passkeys use asymmetric public-key cryptography bound to your device hardware (Touch ID / Face ID / YubiKey), making remote credential theft mathematically impossible.
+              Traditional passwords require transmitting a shared secret to a remote database—vulnerable to credential stuffing, data breaches, and phishing. Passkeys use asymmetric public-key cryptography bound to your device hardware, making remote credential theft mathematically impossible.
             </p>
           </div>
         </div>
       </div>
     </section>
 
-    <!-- ================= TAB 4: PRIVACYSHIELD (EXIF & FINGERPRINTING) ================= -->
+    <!-- ================= TAB: PRIVACYSHIELD (EXIF & FINGERPRINTING) ================= -->
     <section id="tab-privacy-shield" class="tab-pane hidden space-y-6">
       <div class="border-b border-slate-800 pb-4">
         <h2 class="text-2xl font-bold text-white flex items-center gap-2">
@@ -484,7 +655,6 @@
       </div>
 
       <div class="grid grid-cols-1 lg:grid-cols-12 gap-6">
-        <!-- Left: Working EXIF Dropper -->
         <div class="lg:col-span-6 space-y-4">
           <div class="p-6 rounded-xl border border-slate-800 bg-slate-900/80 space-y-4">
             <h3 class="text-sm font-bold text-white font-mono flex items-center gap-2">
@@ -492,7 +662,6 @@
               <span>IMAGE METADATA AUDITOR & SCRUBBER</span>
             </h3>
 
-            <!-- Drop Zone -->
             <div 
               id="exif-dropzone" 
               class="border-2 border-dashed border-slate-700 hover:border-cyan-400 rounded-xl p-8 text-center cursor-pointer transition bg-slate-950/60"
@@ -510,7 +679,6 @@
               </button>
             </div>
 
-            <!-- EXIF Results Box -->
             <div id="exif-results-container">
               <div class="p-5 text-center text-slate-500 border border-dashed border-slate-800 rounded-xl text-xs font-mono">
                 Upload a photo or click sample capture to audit hidden camera metadata and GPS coordinates.
@@ -519,7 +687,6 @@
           </div>
         </div>
 
-        <!-- Right: Passive Browser Fingerprinting Audit -->
         <div class="lg:col-span-6 space-y-4">
           <div class="p-6 rounded-xl border border-slate-800 bg-slate-900/80 space-y-4">
             <div class="flex items-center justify-between pb-2 border-b border-slate-800">
@@ -532,14 +699,13 @@
                 <span>Re-Scan</span>
               </button>
             </div>
-
             <div id="browser-audit-grid"></div>
           </div>
         </div>
       </div>
     </section>
 
-    <!-- ================= TAB 5: SENTINELSOC ================= -->
+    <!-- ================= TAB: SENTINELSOC ================= -->
     <section id="tab-sentinel-soc" class="tab-pane hidden space-y-6">
       <div class="border-b border-slate-800 pb-4">
         <h2 class="text-2xl font-bold text-white flex items-center gap-2">
@@ -549,7 +715,6 @@
         <p class="text-xs text-slate-400 mt-1">Real-time simulation of incoming cyber attacks and interactive multi-step containment playbooks.</p>
       </div>
 
-      <!-- Live Global Threat Attack Map Canvas -->
       <div class="p-5 rounded-xl border border-slate-800 bg-slate-900/90 space-y-3">
         <div class="flex items-center justify-between pb-2 border-b border-slate-800">
           <div class="flex items-center gap-2">
@@ -567,7 +732,6 @@
       </div>
 
       <div class="grid grid-cols-1 lg:grid-cols-12 gap-6">
-        <!-- Feed Column -->
         <div class="lg:col-span-4 space-y-4">
           <div class="p-4 rounded-xl border border-slate-800 bg-slate-900/80 space-y-3">
             <div class="flex items-center justify-between text-xs font-mono">
@@ -580,7 +744,6 @@
             <div id="soc-incidents-feed" class="space-y-2"></div>
           </div>
 
-          <!-- Threat Vector Distribution Doughnut Chart -->
           <div class="p-4 rounded-xl border border-slate-800 bg-slate-900/80 space-y-2">
             <span class="text-xs font-mono text-slate-400 font-bold uppercase block">Attack Vector Distribution</span>
             <div class="h-48 relative">
@@ -589,14 +752,13 @@
           </div>
         </div>
 
-        <!-- Incident Details & Playbook Column -->
         <div class="lg:col-span-8">
           <div id="soc-incident-details"></div>
         </div>
       </div>
     </section>
 
-    <!-- ================= TAB 6: DISCLOSESAFE (CVSS V3.1) ================= -->
+    <!-- ================= TAB: DISCLOSESAFE (CVSS V3.1) ================= -->
     <section id="tab-disclose-safe" class="tab-pane hidden space-y-6">
       <div class="border-b border-slate-800 pb-4">
         <h2 class="text-2xl font-bold text-white flex items-center gap-2">
@@ -607,11 +769,8 @@
       </div>
 
       <div class="grid grid-cols-1 lg:grid-cols-12 gap-6">
-        <!-- CVSS Base Score Matrix (Left 7 cols) -->
         <div class="lg:col-span-7 space-y-5">
           <div class="p-6 rounded-xl border border-slate-800 bg-slate-900/80 space-y-5">
-            
-            <!-- Real-time Score Display Header -->
             <div class="p-4 bg-slate-950 rounded-xl border border-slate-800 flex flex-wrap items-center justify-between gap-3">
               <div>
                 <span class="text-xs font-mono text-slate-500 block">BASE SEVERITY SCORE:</span>
@@ -625,7 +784,6 @@
               </div>
             </div>
 
-            <!-- Vector String Bar -->
             <div class="p-3 bg-slate-950 rounded-lg border border-slate-800 flex items-center justify-between gap-2 font-mono text-xs">
               <span id="cvss-vector-string" class="text-cyan-400 truncate">CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H</span>
               <button onclick="window.CvssCalculator.copyVector()" class="px-2.5 py-1 bg-slate-800 hover:bg-slate-700 text-slate-300 rounded text-[11px] shrink-0 transition">
@@ -633,9 +791,7 @@
               </button>
             </div>
 
-            <!-- CVSS Metrics Selectors -->
             <div class="space-y-4 text-xs font-mono">
-              <!-- AV: Attack Vector -->
               <div class="p-3 bg-slate-950/60 rounded-lg border border-slate-800">
                 <span class="text-slate-400 font-bold block mb-2">1. ATTACK VECTOR (AV):</span>
                 <div class="grid grid-cols-2 sm:grid-cols-4 gap-2">
@@ -654,7 +810,6 @@
                 </div>
               </div>
 
-              <!-- AC & PR -->
               <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
                 <div class="p-3 bg-slate-950/60 rounded-lg border border-slate-800">
                   <span class="text-slate-400 font-bold block mb-2">2. ATTACK COMPLEXITY (AC):</span>
@@ -684,7 +839,6 @@
                 </div>
               </div>
 
-              <!-- UI & Scope -->
               <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
                 <div class="p-3 bg-slate-950/60 rounded-lg border border-slate-800">
                   <span class="text-slate-400 font-bold block mb-2">4. USER INTERACTION (UI):</span>
@@ -711,7 +865,6 @@
                 </div>
               </div>
 
-              <!-- Impact: C, I, A -->
               <div class="p-3 bg-slate-950/60 rounded-lg border border-slate-800">
                 <span class="text-slate-400 font-bold block mb-2">6. IMPACT METRICS (C / I / A):</span>
                 <div class="grid grid-cols-1 sm:grid-cols-3 gap-3">
@@ -746,7 +899,6 @@
           </div>
         </div>
 
-        <!-- Vulnerability Disclosure Program (VDP) Report Builder (Right 5 cols) -->
         <div class="lg:col-span-5 space-y-4">
           <div class="p-6 rounded-xl border border-slate-800 bg-slate-900/80 space-y-4 shadow-xl">
             <h3 class="text-sm font-bold text-white font-mono flex items-center gap-2">
@@ -764,7 +916,7 @@
                 <input id="vdp-asset" type="text" value="https://api.target-firm.internal/v1/auth" class="w-full bg-slate-950 border border-slate-700 rounded px-3 py-2 text-slate-200 focus:outline-none focus:border-cyan-400" />
               </div>
               <div>
-                <label class="block text-slate-400 mb-1">CWE Vulnerability Classification:</label>
+                <label class="block text-slate-400 mb-1">CWE Classification:</label>
                 <select id="vdp-cwe" class="w-full bg-slate-950 border border-slate-700 rounded px-3 py-2 text-slate-200 focus:outline-none focus:border-cyan-400">
                   <option>CWE-89: SQL Injection</option>
                   <option selected>CWE-94: Improper Control of Generation of Code (Code Injection)</option>
@@ -788,7 +940,7 @@
       </div>
     </section>
 
-    <!-- ================= TAB 7: DEFENDER CHALLENGE & CERT ================= -->
+    <!-- ================= TAB: DEFENDER CHALLENGE & CERT ================= -->
     <section id="tab-challenge" class="tab-pane hidden space-y-6">
       <div class="border-b border-slate-800 pb-4">
         <h2 class="text-2xl font-bold text-white flex items-center gap-2">
@@ -835,6 +987,10 @@
   <script src="js/threat-map.js"></script>
   <script src="js/cvss-calculator.js"></script>
   <script src="js/challenge.js"></script>
+  <script src="js/cyber-wargame.js"></script>
+  <script src="js/steganography.js"></script>
+  <script src="js/ai-triage.js"></script>
+  <script src="js/url-analyzer.js"></script>
   <script src="js/app.js"></script>
 </body>
 </html>

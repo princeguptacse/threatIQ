@@ -1,4 +1,4 @@
-# 🛡️ threatIQ – AI-Powered Cybersecurity & Digital Safety Platform
+# 🛡️ threatIQ — AI-Powered Cybersecurity & Digital Safety Platform
 
 > **Official Entry for Pixel Wars X26 — 24-Hour Remote Hackathon (21 November 2026)**  
 > **Category:** Cybersecurity, Privacy & Ethical Hacking  
@@ -11,111 +11,82 @@
 
 > *"Create interfaces that educate, inform, or support safer digital behaviour. Ideas include cyber-awareness portals, security product websites, vulnerability-reporting interfaces, password-safety tools, or simulated security dashboards. Keep demonstrations ethical and safe; do not build tools intended to compromise real systems."*
 
-**ThreatIQ** directly addresses all five suggested domains in a unified, high-tech, responsive cybersecurity defense operating platform:
+**threatIQ** delivers an unbeatable, all-in-one ethical cyber defense operating suite featuring **10 interactive client-side security modules**:
 
-1. **Cyber-Awareness Portal (`🎣 PhishGuard Lab`)**: Real-world interactive attack inspection (Business Email Compromise, Cyrillic Punycode homoglyphs, and Quishing QR code traps) with red flag diagnostics and live scoring.
-2. **Password-Safety Tool (`🔐 CipherFortress`)**: Real-time Shannon entropy calculation (bits), offline GPU cluster (8x RTX 4090) vs. Quantum Shor/Grover crack-time estimations, dictionary pattern scanners, and cryptographic Diceware passphrase generator.
-3. **Digital Privacy & Metadata Scrubber (`🕵️ PrivacyShield`)**: 100% client-side drag-and-drop tool that extracts camera serials and GPS coordinates from photos, strips all tracking headers with a 1-click sanitizer, and runs a passive browser fingerprinting audit.
-4. **Simulated Security Dashboard (`🚨 SentinelSOC`)**: Live simulated SOC incident feed (Ransomware canary alerts, L7 DDoS floods, SQLi WAF blocks) with interactive remediation playbooks and dynamic Chart.js threat distributions.
-5. **Vulnerability-Reporting Interface (`🛡️ DiscloseSafe`)**: Official FIRST CVSS v3.1 calculator that dynamically computes base scores, compiles vector strings, and generates markdown responsible disclosure reports under Safe Harbor standards.
-
----
-
-## 🚀 Key Features & Interactive Modules
-
-### 1. 🎣 PhishGuard & Social Engineering Lab
-- **Interactive Scenarios**:
-  - *Scenario 1 (BEC)*: Executive impersonation & urgent wire transfer.
-  - *Scenario 2 (Homograph)*: Google Workspace lookalike login using Cyrillic `о` (`accounts.gооgle.com`).
-  - *Scenario 3 (Quishing)*: QR code phishing designed to bypass Secure Email Gateways (SEGs).
-- **Deep Threat Audit**: Click-to-reveal inspection of spoofed return paths, artificial urgency triggers, and concealed redirect links.
-- **Defensive Protocol**: Step-by-step guidance on out-of-band verification and email header analysis (SPF, DKIM, DMARC).
-
-### 2. 🔐 CipherFortress & Entropy Engine
-- **Shannon Entropy Engine**: Computes exact bits of entropy using character pool sizing and password length.
-- **Hardware Benchmarks**: Compares cracking times against:
-  - Consumer CPU (10 Million guesses/sec)
-  - 8x NVIDIA RTX 4090 Hashcat Rig ($10^{11}$ hashes/sec)
-  - Theoretical Quantum Computer with Grover's $\sqrt{N}$ speedup
-- **Cryptographic Diceware Generator**: Generates 4-word memorable passphrases with 78+ bits of entropy.
-- **Passkey Comparison**: Demonstrates how FIDO2 / WebAuthn asymmetric cryptography eliminates shared-secret database credential breaches.
-
-### 3. 🕵️ PrivacyShield (EXIF Scrubber & Browser Audit)
-- **Real Working EXIF Tool**:
-  - Drag-and-drop any JPEG/PNG photo or load a sample geotagged iPhone capture.
-  - Exposes Make, Model, Timestamp, and GPS coordinates (Latitude/Longitude).
-  - **1-Click Sanitizer**: Re-draws and renders clean raster Blobs stripped of all EXIF headers for immediate download.
-- **Browser Fingerprinting Audit**:
-  - Analyzes passive browser telemetry: WebGL GPU vendor/renderer, Canvas 2D entropy hash, screen resolution, timezone, CPU concurrency, and DNT status.
-
-### 4. 🚨 SentinelSOC Incident Response Console
-- **Real-Time Threat Telemetry**:
-  - Ransomware canary alerts (Mitre ATT&CK T1486)
-  - Layer-7 DDoS HTTP flood spikes (T1499)
-  - SQL injection attempts blocked at WAF layer (T1190)
-  - SSH credential stuffing waves (T1110.004)
-- **Interactive Remediation Playbooks**:
-  - Step through tactical actions: *Isolate Endpoint*, *Revoke Session Tokens*, *Push Edge WAF Rules*.
-  - Dynamic threat mitigation scoring with live counter.
-- **Visual Analytics**: Interactive Doughnut chart built with Chart.js displaying attack vector proportions.
-
-### 5. 🛡️ DiscloseSafe — Official CVSS v3.1 Engine
-- **Specification Compliant**: Calculates official CVSS v3.1 base score using weighted metrics for Attack Vector (AV), Attack Complexity (AC), Privileges Required (PR), User Interaction (UI), Scope (S), and Impact (C/I/A).
-- **Vector String**: Instant vector compilation (e.g. `CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H`).
-- **Markdown Export**: Generates compliant Responsible Disclosure vulnerability reports ready for submission to bug bounty programs.
+| Category Prompt | threatIQ Module | Live Interactive Capability |
+| :--- | :--- | :--- |
+| **Simulated Security Dashboards** | ⚔️ **Cyber War Game (Battle Arena)** | Real-time battle simulator: Red Team attack waves (DDoS, SQLi, Ransomware, Credential Stuffing) vs. Blue Team tactical countermeasures. |
+| **Security Product Websites / AI** | 🤖 **AI Threat Copilot & Triage** | Paste raw shell scripts, SQL queries, or server logs to receive instant MITRE ATT&CK mapping, CWE classification, and drop-in defensive code. |
+| **Cyber-Awareness Portals** | 🎣 **PhishGuard & Quishing Lab** | Realistic Business Email Compromise, Cyrillic lookalike homoglyphs (`accounts.gооgle.com`), and QR code credential traps with live scoring. |
+| **Cyber-Awareness & URL Safety** | 🔗 **URL & Homoglyph De-Cloaker** | Scans URLs for non-ASCII Punycode characters, open redirect parameters, high-risk TLDs, and nested subdomain brand impersonation. |
+| **Password-Safety Tools** | 🔐 **CipherFortress & Web Crypto** | Shannon entropy math, brute-force crack times on 8x RTX 4090 GPU rigs vs. Quantum Grover speedup, and native SHA-256 Avalanche Effect visualizer. |
+| **Privacy & Safe Digital Behavior** | 🕵️ **PrivacyShield (EXIF Scrubber)** | **Working client-side tool**: Drag-and-drop photos to expose hidden camera serials and GPS tags, with a 1-click sanitizer that downloads clean PNGs. |
+| **Digital Privacy & Ethical Hacking**| 🖼️ **Image Steganography Lab** | Encode confidential secrets into raw image pixel bits (LSB manipulation) and extract hidden payloads from carrier PNGs. |
+| **Simulated Security Dashboards** | 🚨 **SentinelSOC & Global Threat Map**| Animated HTML5 Canvas world threat arc visualizer with live incident response playbooks and Chart.js vector distribution analytics. |
+| **Vulnerability-Reporting Interfaces**| 🛡️ **DiscloseSafe (CVSS v3.1)** | Official FIRST CVSS v3.1 calculator that dynamically computes base scores, compiles vector strings, and generates markdown disclosure reports. |
+| **Educational Gamification** | 🏆 **Defender Challenge & Cert** | 5-question speed evaluation testing practical cyber hygiene with a personalized, downloadable "Certified Defender" credential. |
 
 ---
 
-## 🛠️ Technology Stack & Architecture
+## 🚀 Deep Architectural Highlights
 
-- **Frontend**: Semantic HTML5, Vanilla JavaScript (ES6+ Modules), Tailwind CSS
-- **Visuals & HUD**: Lucide Icons, Custom Cyber Scanlines, Glassmorphism, JetBrains Mono typography
-- **Data Visualization**: Chart.js (Doughnut threat distributions)
-- **Client-Side Image Processing**: Exif.js + HTML5 Canvas raster sanitization
-- **Web Audio API**: Real-time synthesizer for tactical HUD audio effects
-- **Zero Build Friction**: 100% client-side static application. No complex dependencies, zero build-step errors, and instant deployment.
+### 1. ⚔️ Red Team vs Blue Team Cyber War Game
+- Real-time event loop with ticking health meter and attack waves.
+- Players analyze threat signatures and select matching countermeasures (*Edge WAF Rate-Limiting*, *FIDO2 MFA Enforcement*, *Prepared Statements*, *Host Isolation*).
+- Dynamic win/loss state with confetti and audio feedback.
+
+### 2. 🤖 AI Threat Copilot & Payload Triage
+- Client-side heuristic analyzer for:
+  - Log4Shell JNDI injection (`${jndi:ldap://...}`)
+  - OS command chaining (`ping 127.0.0.1; curl ... | bash`)
+  - Stored XSS cookie stealing (`<script>document.cookie...</script>`)
+  - Blind SQL injection (`UNION SELECT ...`)
+  - Directory traversal (`../../../../etc/passwd`)
+- Extracts Indicators of Compromise (IOCs) and outputs drop-in secure code.
+
+### 3. 🖼️ LSB Steganography Engine
+- Uses HTML5 Canvas `getImageData` and `putImageData` to manipulate the least significant bit (bit 0) of the red, green, and blue color channels.
+- Encodes arbitrary ASCII strings into image rasters without visible color shifts.
+- Decodes hidden null-terminated binary streams back into readable text.
+
+### 4. 🕵️ EXIF Geotag Metadata Scrubber
+- Reads binary EXIF markers directly in the browser using FileReader.
+- Re-draws selected images onto an offline canvas element and exports an uncompressed PNG blob, permanently stripping all GPS tags, device serials, and timestamps.
+
+### 5. 🚨 Animated Global Threat Map (Canvas)
+- Custom quadratic bezier curve renderer calculating projectile trajectories between simulated global telemetry nodes (US-East, Frankfurt, Tokyo, Singapore, São Paulo, London, Mumbai).
 
 ---
 
 ## 💻 How to Run Locally
 
-You can run ThreatIQ locally with any standard HTTP server:
-
 ```bash
 # Clone the repository
-git clone https://github.com/prince-044/threatiq.git
+git clone https://github.com/<your-username>/threatiq.git
 cd threatiq
 
-# Run using Python built-in server
-python3 -m http.server 8000
+# Open directly in browser or run via Python
+python3 -m http.server 8080
 ```
-
-Open `http://localhost:8000` in your web browser.
+Open `http://localhost:8080` or simply double-click `index.html`.
 
 ---
 
 ## 🌐 Instant Live Deployment Guide
 
-ThreatIQ is pre-configured for instant deployment:
-
-### Option A: GitHub Pages
-1. Push this folder to a GitHub repository:
+1. **Push to GitHub**:
    ```bash
-   git init
-   git add .
-   git commit -m "feat: initial commit for Pixel Wars X26"
    git remote add origin https://github.com/<your-username>/threatiq.git
    git push -u origin main
    ```
-2. In GitHub, go to **Settings > Pages > Source > Deploy from a branch (`main` / root)**.
-3. Your live URL will be active in seconds: `https://<your-username>.github.io/threatiq/`.
-
-### Option B: Vercel / Netlify
-1. Drag and drop the `threatiq` folder directly into [Vercel Dashboard](https://vercel.com) or [Netlify Drop](https://app.netlify.com/drop).
-2. It deploys automatically as a static site with 100% uptime.
+2. **Deploy via GitHub Pages**:
+   - Go to **Settings > Pages > Branch: `main` / root > Save**.
+   - Your live URL: `https://<your-username>.github.io/threatiq/`
+3. *(Alternative)* **Deploy via Vercel**:
+   - Import your repository on [vercel.com](https://vercel.com) and click **Deploy**.
 
 ---
 
 ## ⚖️ Ethical Hacking & Safe Harbor Statement
 
-ThreatIQ was designed and developed strictly for educational, defensive, and security awareness purposes. It contains no exploit payloads, does not perform unauthorized network reconnaissance, and adheres to ISO/IEC 29147 standards for responsible vulnerability disclosure.
+threatIQ was engineered exclusively for defensive, educational, and digital awareness purposes. All attack demonstrations are strictly sandboxed and compliant with ISO/IEC 29147 responsible disclosure standards.
