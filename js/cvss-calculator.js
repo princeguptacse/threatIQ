@@ -150,7 +150,7 @@ ${desc}
 ${remediation}
 
 ---
-*Report formatted via AegisX Ethical Disclosure Engine.*
+*Report formatted via ThreatIQ Ethical Disclosure Engine.*
 `;
 
     const blob = new Blob([reportMarkdown], { type: "text/markdown" });

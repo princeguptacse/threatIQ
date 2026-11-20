@@ -1,8 +1,8 @@
 // ==========================================
-// Main Application Controller: AegisX
+// Main Application Controller: ThreatIQ
 // ==========================================
 
-class AegisApp {
+class ThreatIQApp {
   constructor() {
     this.currentTab = "overview";
     this.soundEnabled = false;
@@ -146,7 +146,7 @@ class AegisApp {
     let response = "";
     if (cmd === "help") {
       response = `
-        <div class="text-cyan-400 mb-1">AVAILABLE AEGIS COMMANDS:</div>
+        <div class="text-cyan-400 mb-1">AVAILABLE THREATIQ COMMANDS:</div>
         <div class="text-slate-300 space-y-0.5">
           • <span class="text-yellow-400">challenge</span>: Open Defender Aptitude Challenge & Certificate<br>
           • <span class="text-yellow-400">scan</span>: Run quick browser & environment security audit<br>
@@ -180,7 +180,7 @@ class AegisApp {
       this.switchTab("disclose-safe");
       response = `<span class="text-cyan-400">Navigating to DiscloseSafe CVSS Calculator...</span>`;
     } else if (cmd === "rules") {
-      response = `<span class="text-slate-300">AegisX Code of Ethics: Safe Harbor compliant. All demonstrations are educational, defensive, and sanitized. Never compromise unauthorized infrastructure.</span>`;
+      response = `<span class="text-slate-300">ThreatIQ Code of Ethics: Safe Harbor compliant. All demonstrations are educational, defensive, and sanitized. Never compromise unauthorized infrastructure.</span>`;
     } else if (cmd === "clear") {
       container.innerHTML = "";
       return;
@@ -190,13 +190,13 @@ class AegisApp {
       response = `<span class="text-rose-400">Command not recognized: '${cmd}'. Type <span class="underline">help</span> for assistance.</span>`;
     }
 
-    line.innerHTML = `<span class="text-slate-500 font-bold">$ aegisx-cli &gt;</span> <span class="text-slate-200">${cmd}</span><br>${response}`;
+    line.innerHTML = `<span class="text-slate-500 font-bold">$ threatiq-cli &gt;</span> <span class="text-slate-200">${cmd}</span><br>${response}`;
     container.appendChild(line);
     container.scrollTop = container.scrollHeight;
   }
 }
 
 document.addEventListener("DOMContentLoaded", () => {
-  window.Aegis = new AegisApp();
-  window.Aegis.init();
+  window.ThreatIQ = new ThreatIQApp();
+  window.ThreatIQ.init();
 });

@@ -214,7 +214,7 @@ class ExifScrubber {
       ctx.fillRect(0, 0, 600, 400);
       ctx.fillStyle = "#38bdf8";
       ctx.font = "20px monospace";
-      ctx.fillText("AEGISX SANITIZED IMAGE", 40, 180);
+      ctx.fillText("THREATIQ SANITIZED IMAGE", 40, 180);
       ctx.fillStyle = "#94a3b8";
       ctx.font = "14px monospace";
       ctx.fillText("All EXIF, Geotags & Device IDs Removed", 40, 220);
