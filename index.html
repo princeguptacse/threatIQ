@@ -1,0 +1,774 @@
+<!DOCTYPE html>
+<html lang="en" class="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Aegis-OS | Ethical Cybersecurity, Privacy & Threat Defense Playground</title>
+  <meta name="description" content="A comprehensive ethical cybersecurity, digital privacy and cyber-defense simulator built for Pixel Wars X26.">
+  
+  <!-- Tailwind CSS via CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          colors: {
+            cyber: {
+              950: '#060911',
+              900: '#090d16',
+              800: '#0f172a',
+              700: '#1e293b',
+              accent: '#06b6d4',
+              neon: '#38bdf8'
+            }
+          }
+        }
+      }
+    }
+  </script>
+
+  <!-- Lucide Icons -->
+  <script src="https://unpkg.com/lucide@latest"></script>
+
+  <!-- Chart.js for SOC Metrics -->
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+  <!-- Canvas Confetti for Interactive Achievements -->
+  <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.9.3/dist/confetti.browser.min.js"></script>
+
+  <!-- Exif.js for Client-Side Metadata Extraction -->
+  <script src="https://cdn.jsdelivr.net/npm/exif-js"></script>
+
+  <!-- Custom CSS -->
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body class="bg-[#090d16] text-slate-100 min-h-screen flex flex-col cyber-grid">
+
+  <!-- ================= TOP HUD & SYSTEM STATUS BAR ================= -->
+  <header class="border-b border-slate-800 bg-[#090d16]/90 backdrop-blur-md sticky top-0 z-50">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
+      
+      <!-- Brand & Status -->
+      <div class="flex items-center space-x-3">
+        <div class="w-9 h-9 rounded-lg bg-cyan-950 border border-cyan-500/50 flex items-center justify-center text-cyan-400 shadow-lg shadow-cyan-500/20">
+          <i data-lucide="shield-check" class="w-5 h-5"></i>
+        </div>
+        <div>
+          <div class="flex items-center space-x-2">
+            <span class="font-bold text-lg tracking-wider text-white">AEGIS<span class="text-cyan-400">.OS</span></span>
+            <span class="px-2 py-0.5 rounded text-[10px] font-mono bg-cyan-950/80 text-cyan-300 border border-cyan-800">v2.6 SEC-EDITION</span>
+          </div>
+          <div class="text-[10px] font-mono text-slate-500 flex items-center space-x-2">
+            <span class="inline-block w-1.5 h-1.5 rounded-full bg-emerald-400 animate-ping"></span>
+            <span>SYSTEM INTEGRITY: 100%</span>
+            <span>•</span>
+            <span class="text-slate-400">DEFCON 4 (DEFENSIVE)</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Action & Hackathon Badges -->
+      <div class="flex items-center space-x-3">
+        <button id="sound-toggle-btn" class="px-3 py-1.5 rounded-lg border border-slate-800 bg-slate-900/80 hover:bg-slate-800 flex items-center space-x-1.5 transition">
+          <i data-lucide="volume-x" class="w-4 h-4 text-slate-500"></i>
+          <span class="text-xs font-mono text-slate-500">SFX OFF</span>
+        </button>
+
+        <div class="hidden md:flex items-center px-3 py-1.5 rounded-lg border border-cyan-500/30 bg-cyan-950/30 font-mono text-xs text-cyan-300">
+          <i data-lucide="award" class="w-3.5 h-3.5 mr-1.5 text-cyan-400"></i>
+          <span>PIXEL WARS X26</span>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- Navigation Tabs -->
+    <nav class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 border-t border-slate-800/80 flex space-x-1 sm:space-x-2 overflow-x-auto py-2 text-xs font-mono">
+      <button data-nav-target="overview" class="px-3 py-1.5 rounded-md border text-cyan-400 border-cyan-400 bg-cyan-950/30 flex items-center space-x-1.5 transition whitespace-nowrap">
+        <i data-lucide="layout-dashboard" class="w-3.5 h-3.5"></i>
+        <span>Overview & Hub</span>
+      </button>
+      <button data-nav-target="phish-guard" class="px-3 py-1.5 rounded-md border border-transparent text-slate-400 hover:text-slate-200 hover:bg-slate-900/60 flex items-center space-x-1.5 transition whitespace-nowrap">
+        <i data-lucide="mail-warning" class="w-3.5 h-3.5"></i>
+        <span>🎣 PhishGuard Lab</span>
+      </button>
+      <button data-nav-target="cipher-fortress" class="px-3 py-1.5 rounded-md border border-transparent text-slate-400 hover:text-slate-200 hover:bg-slate-900/60 flex items-center space-x-1.5 transition whitespace-nowrap">
+        <i data-lucide="key-round" class="w-3.5 h-3.5"></i>
+        <span>🔐 CipherFortress</span>
+      </button>
+      <button data-nav-target="privacy-shield" class="px-3 py-1.5 rounded-md border border-transparent text-slate-400 hover:text-slate-200 hover:bg-slate-900/60 flex items-center space-x-1.5 transition whitespace-nowrap">
+        <i data-lucide="eye-off" class="w-3.5 h-3.5"></i>
+        <span>🕵️ PrivacyShield (EXIF)</span>
+      </button>
+      <button data-nav-target="sentinel-soc" class="px-3 py-1.5 rounded-md border border-transparent text-slate-400 hover:text-slate-200 hover:bg-slate-900/60 flex items-center space-x-1.5 transition whitespace-nowrap">
+        <i data-lucide="activity" class="w-3.5 h-3.5"></i>
+        <span>🚨 SentinelSOC</span>
+      </button>
+      <button data-nav-target="disclose-safe" class="px-3 py-1.5 rounded-md border border-transparent text-slate-400 hover:text-slate-200 hover:bg-slate-900/60 flex items-center space-x-1.5 transition whitespace-nowrap">
+        <i data-lucide="file-code" class="w-3.5 h-3.5"></i>
+        <span>🛡️ DiscloseSafe CVSS</span>
+      </button>
+    </nav>
+  </header>
+
+  <!-- ================= MAIN CONTENT CONTAINER ================= -->
+  <main class="flex-grow max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6 w-full">
+
+    <!-- ================= TAB 1: OVERVIEW & HUB ================= -->
+    <section id="tab-overview" class="tab-pane space-y-8">
+      
+      <!-- Hero Banner -->
+      <div class="relative overflow-hidden rounded-2xl border border-cyan-500/30 bg-gradient-to-br from-slate-950 via-[#0c1322] to-slate-950 p-6 sm:p-10 shadow-2xl">
+        <div class="absolute -right-20 -top-20 w-80 h-80 rounded-full bg-cyan-500/10 blur-3xl pointer-events-none"></div>
+        <div class="max-w-3xl space-y-4">
+          <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-cyan-950/80 border border-cyan-500/40 text-cyan-300 font-mono text-xs">
+            <span class="w-2 h-2 rounded-full bg-cyan-400 animate-pulse"></span>
+            <span>CATEGORY: CYBERSECURITY, PRIVACY & ETHICAL HACKING</span>
+          </div>
+          <h1 class="text-3xl sm:text-5xl font-extrabold tracking-tight text-white leading-tight">
+            Safer Digital Behavior Through <span class="text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 via-sky-300 to-emerald-400">Interactive Cyber Intelligence</span>.
+          </h1>
+          <p class="text-slate-300 text-sm sm:text-base leading-relaxed">
+            Aegis-OS empowers everyday users, developers, and ethical researchers to inspect threats before they strike. Simulate social engineering traps, analyze password entropy against GPU clusters, scrub location-exposing metadata from photos, and respond to real-time security operations center incidents.
+          </p>
+
+          <div class="pt-2 flex flex-wrap items-center gap-3">
+            <button onclick="window.Aegis.switchTab('phish-guard')" class="px-5 py-2.5 rounded-lg bg-cyan-600 hover:bg-cyan-500 text-white font-mono text-xs font-bold flex items-center gap-2 shadow-lg shadow-cyan-600/30 transition">
+              <i data-lucide="play" class="w-4 h-4"></i>
+              <span>Launch PhishGuard Simulator</span>
+            </button>
+            <button onclick="window.Aegis.switchTab('sentinel-soc')" class="px-5 py-2.5 rounded-lg bg-slate-900 hover:bg-slate-800 text-slate-200 border border-slate-700 font-mono text-xs flex items-center gap-2 transition">
+              <i data-lucide="terminal" class="w-4 h-4"></i>
+              <span>Open SentinelSOC Incident Playbook</span>
+            </button>
+          </div>
+        </div>
+
+        <!-- Metric Badges Row -->
+        <div class="grid grid-cols-2 md:grid-cols-4 gap-3 mt-8 pt-6 border-t border-slate-800/80">
+          <div class="p-3 bg-slate-950/60 rounded-lg border border-slate-800/80">
+            <div class="text-[11px] font-mono text-slate-500 uppercase">Live Threats Blocked</div>
+            <div id="threats-blocked-count" class="text-xl font-bold font-mono text-cyan-400 mt-1">142,890</div>
+          </div>
+          <div class="p-3 bg-slate-950/60 rounded-lg border border-slate-800/80">
+            <div class="text-[11px] font-mono text-slate-500 uppercase">Working Tools</div>
+            <div class="text-xl font-bold font-mono text-emerald-400 mt-1">5 Interactive Labs</div>
+          </div>
+          <div class="p-3 bg-slate-950/60 rounded-lg border border-slate-800/80">
+            <div class="text-[11px] font-mono text-slate-500 uppercase">Client-Side Privacy</div>
+            <div class="text-xl font-bold font-mono text-sky-400 mt-1">100% Zero-Leak</div>
+          </div>
+          <div class="p-3 bg-slate-950/60 rounded-lg border border-slate-800/80">
+            <div class="text-[11px] font-mono text-slate-500 uppercase">Safe Harbor</div>
+            <div class="text-xl font-bold font-mono text-amber-400 mt-1">Strictly Ethical</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Feature Grid: 5 Core Pillars -->
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
+        
+        <!-- Card 1 -->
+        <div onclick="window.Aegis.switchTab('phish-guard')" class="glass-panel p-6 rounded-xl hover:border-cyan-400/50 transition cursor-pointer group">
+          <div class="w-10 h-10 rounded-lg bg-cyan-950 text-cyan-400 border border-cyan-800 flex items-center justify-center mb-4 group-hover:scale-105 transition">
+            <i data-lucide="mail-warning" class="w-5 h-5"></i>
+          </div>
+          <h3 class="text-base font-bold text-white group-hover:text-cyan-300 transition">PhishGuard & Quishing Lab</h3>
+          <p class="text-xs text-slate-400 mt-2 leading-relaxed">
+            Inspect real-world attack vectors: spoofed sender headers, Cyrillic lookalike homoglyphs, and QR code credential traps with instant scoring.
+          </p>
+          <div class="mt-4 text-xs font-mono text-cyan-400 flex items-center gap-1">
+            <span>Explore Simulator</span>
+            <i data-lucide="arrow-right" class="w-3.5 h-3.5 group-hover:translate-x-1 transition"></i>
+          </div>
+        </div>
+
+        <!-- Card 2 -->
+        <div onclick="window.Aegis.switchTab('cipher-fortress')" class="glass-panel p-6 rounded-xl hover:border-cyan-400/50 transition cursor-pointer group">
+          <div class="w-10 h-10 rounded-lg bg-emerald-950 text-emerald-400 border border-emerald-800 flex items-center justify-center mb-4 group-hover:scale-105 transition">
+            <i data-lucide="key-round" class="w-5 h-5"></i>
+          </div>
+          <h3 class="text-base font-bold text-white group-hover:text-emerald-300 transition">CipherFortress & Entropy Engine</h3>
+          <p class="text-xs text-slate-400 mt-2 leading-relaxed">
+            Real-time Shannon entropy calculation and live crack-time estimates comparing single CPUs vs 8x NVIDIA RTX 4090 GPU rigs vs Quantum algorithms.
+          </p>
+          <div class="mt-4 text-xs font-mono text-emerald-400 flex items-center gap-1">
+            <span>Audit Password Entropy</span>
+            <i data-lucide="arrow-right" class="w-3.5 h-3.5 group-hover:translate-x-1 transition"></i>
+          </div>
+        </div>
+
+        <!-- Card 3 -->
+        <div onclick="window.Aegis.switchTab('privacy-shield')" class="glass-panel p-6 rounded-xl hover:border-cyan-400/50 transition cursor-pointer group">
+          <div class="w-10 h-10 rounded-lg bg-sky-950 text-sky-400 border border-sky-800 flex items-center justify-center mb-4 group-hover:scale-105 transition">
+            <i data-lucide="eye-off" class="w-5 h-5"></i>
+          </div>
+          <h3 class="text-base font-bold text-white group-hover:text-sky-300 transition">EXIF Scrubber & Browser Audit</h3>
+          <p class="text-xs text-slate-400 mt-2 leading-relaxed">
+            Drag-and-drop client-side tool to expose hidden GPS tags and camera serials in photos, with a 1-click sanitizer and browser fingerprint scanner.
+          </p>
+          <div class="mt-4 text-xs font-mono text-sky-400 flex items-center gap-1">
+            <span>Scrub Photo Geotags</span>
+            <i data-lucide="arrow-right" class="w-3.5 h-3.5 group-hover:translate-x-1 transition"></i>
+          </div>
+        </div>
+
+        <!-- Card 4 -->
+        <div onclick="window.Aegis.switchTab('sentinel-soc')" class="glass-panel p-6 rounded-xl hover:border-cyan-400/50 transition cursor-pointer group">
+          <div class="w-10 h-10 rounded-lg bg-rose-950 text-rose-400 border border-rose-800 flex items-center justify-center mb-4 group-hover:scale-105 transition">
+            <i data-lucide="activity" class="w-5 h-5"></i>
+          </div>
+          <h3 class="text-base font-bold text-white group-hover:text-rose-300 transition">SentinelSOC Defense Console</h3>
+          <p class="text-xs text-slate-400 mt-2 leading-relaxed">
+            Simulated SOC alert stream: Ransomware canaries, L7 DDoS floods, and SQL injection probes with interactive remediation playbooks.
+          </p>
+          <div class="mt-4 text-xs font-mono text-rose-400 flex items-center gap-1">
+            <span>Access SOC Console</span>
+            <i data-lucide="arrow-right" class="w-3.5 h-3.5 group-hover:translate-x-1 transition"></i>
+          </div>
+        </div>
+
+        <!-- Card 5 -->
+        <div onclick="window.Aegis.switchTab('disclose-safe')" class="glass-panel p-6 rounded-xl hover:border-cyan-400/50 transition cursor-pointer group">
+          <div class="w-10 h-10 rounded-lg bg-amber-950 text-amber-400 border border-amber-800 flex items-center justify-center mb-4 group-hover:scale-105 transition">
+            <i data-lucide="file-code" class="w-5 h-5"></i>
+          </div>
+          <h3 class="text-base font-bold text-white group-hover:text-amber-300 transition">DiscloseSafe CVSS v3.1 Engine</h3>
+          <p class="text-xs text-slate-400 mt-2 leading-relaxed">
+            Interactive CVSS v3.1 severity calculator with official FIRST.org weighting, vector string generation, and safe-harbor disclosure report exporter.
+          </p>
+          <div class="mt-4 text-xs font-mono text-amber-400 flex items-center gap-1">
+            <span>Calculate CVSS Score</span>
+            <i data-lucide="arrow-right" class="w-3.5 h-3.5 group-hover:translate-x-1 transition"></i>
+          </div>
+        </div>
+
+        <!-- Card 6: Interactive Terminal Box -->
+        <div class="glass-panel p-6 rounded-xl border-slate-800 flex flex-col justify-between">
+          <div>
+            <div class="flex items-center justify-between pb-2 border-b border-slate-800 mb-3">
+              <span class="text-xs font-mono text-cyan-400 font-bold flex items-center gap-1.5">
+                <i data-lucide="terminal" class="w-3.5 h-3.5"></i>
+                <span>AEGIS INTERACTIVE CLI</span>
+              </span>
+              <span class="text-[10px] font-mono text-slate-500">TYPE 'HELP'</span>
+            </div>
+            <div id="terminal-history" class="h-28 overflow-y-auto space-y-1 pr-1 font-mono text-xs text-slate-400">
+              <div class="text-slate-500">// Aegis-OS CLI initialized. Ready for command input.</div>
+            </div>
+          </div>
+          <div class="mt-3 flex items-center gap-2 border-t border-slate-800 pt-2">
+            <span class="text-xs font-mono text-cyan-400 font-bold">$</span>
+            <input 
+              id="terminal-cmd-input" 
+              type="text" 
+              placeholder="type 'help', 'scan', 'soc', 'pass'..."
+              class="w-full bg-transparent text-xs font-mono text-white focus:outline-none placeholder-slate-600"
+            />
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Ethical Code of Conduct Banner -->
+      <div class="p-5 rounded-xl border border-slate-800 bg-slate-950/70 flex flex-col sm:flex-row items-center justify-between gap-4">
+        <div class="flex items-center gap-3">
+          <div class="w-10 h-10 rounded-full bg-emerald-950/60 border border-emerald-500/40 text-emerald-400 flex items-center justify-center shrink-0">
+            <i data-lucide="shield-alert" class="w-5 h-5"></i>
+          </div>
+          <div>
+            <h4 class="text-sm font-bold text-white">Ethical Hacking & Safe Harbor Commitment</h4>
+            <p class="text-xs text-slate-400 mt-0.5">
+              All tools and simulations in Aegis-OS are strictly educational and defensive. Designed in compliance with ISO/IEC 29147 responsible disclosure standards.
+            </p>
+          </div>
+        </div>
+        <div class="text-xs font-mono text-emerald-400 px-3 py-1.5 rounded bg-emerald-950/40 border border-emerald-800/60 whitespace-nowrap">
+          ✓ SAFE HARBOR VERIFIED
+        </div>
+      </div>
+
+    </section>
+
+    <!-- ================= TAB 2: PHISHGUARD LAB ================= -->
+    <section id="tab-phish-guard" class="tab-pane hidden space-y-6">
+      <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2 border-b border-slate-800 pb-4">
+        <div>
+          <h2 class="text-2xl font-bold text-white flex items-center gap-2">
+            <span>🎣 PhishGuard & Social Engineering Lab</span>
+            <span class="text-xs font-mono px-2 py-0.5 rounded bg-cyan-950 text-cyan-300 border border-cyan-800">INTERACTIVE INSPECTOR</span>
+          </h2>
+          <p class="text-xs text-slate-400 mt-1">Inspect real-world attack vectors: spoofed sender headers, Cyrillic lookalike homoglyphs, and QR code credential traps.</p>
+        </div>
+      </div>
+
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-6">
+        <!-- Left Column: Scenario Selector & Email View -->
+        <div class="lg:col-span-8 space-y-4">
+          <div class="space-y-2">
+            <label class="text-xs font-mono uppercase text-slate-400 font-bold block">1. Select Simulated Attack Scenario:</label>
+            <div id="phish-scenarios-list" class="grid grid-cols-1 sm:grid-cols-3 gap-2"></div>
+          </div>
+
+          <div id="phish-email-view" class="mt-4"></div>
+        </div>
+
+        <!-- Right Column: Deep Threat Audit & Red Flags -->
+        <div class="lg:col-span-4 space-y-4">
+          <div class="p-4 rounded-xl border border-slate-800 bg-slate-900/60">
+            <h3 class="text-sm font-bold text-white font-mono flex items-center gap-2 mb-3">
+              <i data-lucide="microscope" class="w-4 h-4 text-cyan-400"></i>
+              <span>THREAT TELEMETRY & AUDIT</span>
+            </h3>
+            <div id="phish-flags-view"></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================= TAB 3: CIPHERFORTRESS ================= -->
+    <section id="tab-cipher-fortress" class="tab-pane hidden space-y-6">
+      <div class="border-b border-slate-800 pb-4">
+        <h2 class="text-2xl font-bold text-white flex items-center gap-2">
+          <span>🔐 CipherFortress — Password & Entropy Intelligence</span>
+          <span class="text-xs font-mono px-2 py-0.5 rounded bg-emerald-950 text-emerald-300 border border-emerald-800">REAL-TIME MATH</span>
+        </h2>
+        <p class="text-xs text-slate-400 mt-1">Calculates Shannon entropy in bits, simulates crack-time on GPU rigs vs Quantum computers, and generates cryptographic Diceware passphrases.</p>
+      </div>
+
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-6">
+        <!-- Left: Password Input & Analysis -->
+        <div class="lg:col-span-7 space-y-5">
+          <div class="p-6 rounded-xl border border-slate-800 bg-slate-900/80 space-y-4 shadow-xl">
+            <div>
+              <label class="block text-xs font-mono uppercase tracking-wider text-slate-400 mb-2 font-bold">Test Password or Passphrase Live:</label>
+              <div class="relative">
+                <input 
+                  id="pwd-input" 
+                  type="text" 
+                  placeholder="Enter sample password (e.g. Tr0ub4dor&3 or correct-horse-battery-staple)" 
+                  class="w-full px-4 py-3 bg-slate-950 border border-slate-700 rounded-lg text-sm font-mono text-cyan-300 focus:outline-none focus:border-cyan-400 transition"
+                />
+              </div>
+            </div>
+
+            <!-- Entropy Meter Bar -->
+            <div class="space-y-1.5">
+              <div class="flex items-center justify-between text-xs font-mono">
+                <span class="text-slate-400">SHANNON ENTROPY: <strong id="entropy-bits" class="text-cyan-400">0 bits</strong></span>
+                <span id="strength-status" class="font-bold text-rose-400">WAITING FOR INPUT</span>
+              </div>
+              <div class="w-full h-2.5 bg-slate-950 rounded-full overflow-hidden border border-slate-800">
+                <div id="strength-bar" class="h-full w-0 transition-all duration-300 bg-rose-500"></div>
+              </div>
+            </div>
+
+            <!-- Crack-Time Hardware Benchmark Cards -->
+            <div class="pt-2">
+              <span class="block text-xs font-mono uppercase text-slate-400 mb-2 font-bold">Estimated Time to Crack (Brute-Force & Dictionaries):</span>
+              <div class="grid grid-cols-1 sm:grid-cols-3 gap-3">
+                <div class="p-3 bg-slate-950 rounded-lg border border-slate-800">
+                  <div class="text-[10px] font-mono text-slate-500">CONSUMER CPU</div>
+                  <div class="text-xs font-mono text-slate-400">10M tries/sec</div>
+                  <div id="crack-cpu" class="text-sm font-bold font-mono text-white mt-1">Instant</div>
+                </div>
+                <div class="p-3 bg-slate-950 rounded-lg border border-slate-800">
+                  <div class="text-[10px] font-mono text-slate-500">8x RTX 4090 CLUSTER</div>
+                  <div class="text-xs font-mono text-slate-400">100B tries/sec</div>
+                  <div id="crack-rtx" class="text-sm font-bold font-mono text-amber-400 mt-1">Instant</div>
+                </div>
+                <div class="p-3 bg-slate-950 rounded-lg border border-slate-800">
+                  <div class="text-[10px] font-mono text-slate-500">QUANTUM (GROVER'S)</div>
+                  <div class="text-xs font-mono text-slate-400">√N Speedup</div>
+                  <div id="crack-quantum" class="text-sm font-bold font-mono text-cyan-400 mt-1">Instant</div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Vulnerability Pattern Warnings -->
+            <div class="p-3 bg-slate-950 rounded-lg border border-slate-800">
+              <span class="text-[11px] font-mono uppercase tracking-wider text-slate-500 block mb-1">Pattern & Dictionary Weakness Check:</span>
+              <div id="pattern-warnings" class="space-y-1">
+                <span class="text-xs text-slate-500">Type a password above to begin analysis.</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Passkey vs Password Explainer -->
+          <div class="p-5 rounded-xl border border-cyan-500/30 bg-cyan-950/20 text-xs space-y-2">
+            <div class="flex items-center gap-2 text-cyan-400 font-mono font-bold">
+              <i data-lucide="fingerprint" class="w-4 h-4"></i>
+              <span>WHY MODERN SECURITY PREFERS PASSKEYS (FIDO2 / WEBAUTHN)</span>
+            </div>
+            <p class="text-slate-300 leading-relaxed">
+              Traditional passwords require transmitting a shared secret to a remote database—vulnerable to credential stuffing, data breaches, and phishing. Passkeys use asymmetric public-key cryptography bound to your device hardware (Touch ID / Face ID / YubiKey), making remote credential theft mathematically impossible.
+            </p>
+          </div>
+        </div>
+
+        <!-- Right: Cryptographic Passphrase Generator -->
+        <div class="lg:col-span-5 space-y-5">
+          <div class="p-6 rounded-xl border border-slate-800 bg-slate-900/80 space-y-4">
+            <div class="flex items-center justify-between pb-2 border-b border-slate-800">
+              <h3 class="text-sm font-bold text-white font-mono flex items-center gap-2">
+                <i data-lucide="sparkles" class="w-4 h-4 text-emerald-400"></i>
+                <span>CRYPTOGRAPHIC PASSPHRASE GENERATOR</span>
+              </h3>
+            </div>
+            <p class="text-xs text-slate-400 leading-relaxed">
+              Multi-word passphrases provide exponential entropy against brute-force attacks while remaining effortless for human memory (the famous XKCD #936 principle).
+            </p>
+
+            <div class="p-4 bg-slate-950 rounded-lg border border-slate-800 text-center space-y-2">
+              <div id="generated-passphrase" class="font-mono text-sm sm:text-base font-bold text-emerald-400 select-all tracking-wide break-all">
+                correct-horse-battery-staple-88
+              </div>
+              <div class="text-[11px] font-mono text-slate-500">Estimated Entropy: ~78.4 bits (Practically Uncrackable)</div>
+            </div>
+
+            <div class="flex items-center gap-2">
+              <button onclick="window.PasswordFortress.generatePassphrase()" class="w-1/2 py-2.5 bg-slate-800 hover:bg-slate-700 text-white rounded-lg font-mono text-xs font-bold transition flex items-center justify-center gap-1.5">
+                <i data-lucide="refresh-cw" class="w-3.5 h-3.5"></i>
+                <span>Roll New</span>
+              </button>
+              <button onclick="window.PasswordFortress.copyPassphrase()" class="w-1/2 py-2.5 bg-emerald-600 hover:bg-emerald-500 text-white rounded-lg font-mono text-xs font-bold transition flex items-center justify-center gap-1.5 shadow-lg shadow-emerald-600/20">
+                <i data-lucide="copy" class="w-3.5 h-3.5"></i>
+                <span>Copy Passphrase</span>
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================= TAB 4: PRIVACYSHIELD (EXIF & FINGERPRINTING) ================= -->
+    <section id="tab-privacy-shield" class="tab-pane hidden space-y-6">
+      <div class="border-b border-slate-800 pb-4">
+        <h2 class="text-2xl font-bold text-white flex items-center gap-2">
+          <span>🕵️ PrivacyShield — EXIF Metadata Scrubber & Fingerprint Audit</span>
+          <span class="text-xs font-mono px-2 py-0.5 rounded bg-sky-950 text-sky-300 border border-sky-800">CLIENT-SIDE PRIVACY</span>
+        </h2>
+        <p class="text-xs text-slate-400 mt-1">Photos taken on mobile devices embed exact GPS coordinates and device serials. Inspect and sanitize files before sharing online.</p>
+      </div>
+
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-6">
+        <!-- Left: Working EXIF Dropper -->
+        <div class="lg:col-span-6 space-y-4">
+          <div class="p-6 rounded-xl border border-slate-800 bg-slate-900/80 space-y-4">
+            <h3 class="text-sm font-bold text-white font-mono flex items-center gap-2">
+              <i data-lucide="image" class="w-4 h-4 text-sky-400"></i>
+              <span>IMAGE METADATA AUDITOR & SCRUBBER</span>
+            </h3>
+
+            <!-- Drop Zone -->
+            <div 
+              id="exif-dropzone" 
+              class="border-2 border-dashed border-slate-700 hover:border-cyan-400 rounded-xl p-8 text-center cursor-pointer transition bg-slate-950/60"
+            >
+              <i data-lucide="upload-cloud" class="w-10 h-10 mx-auto text-slate-500 mb-2"></i>
+              <div class="text-sm font-semibold text-slate-200">Drag & drop your JPEG/PNG photo here</div>
+              <p class="text-xs text-slate-500 mt-1">or click to browse files from your computer</p>
+              <input id="exif-file-input" type="file" accept="image/jpeg,image/png" class="hidden" />
+            </div>
+
+            <div class="flex items-center justify-between text-xs font-mono">
+              <span class="text-slate-500">No test photo handy?</span>
+              <button onclick="window.ExifScrubber.loadSamplePhoto()" class="text-cyan-400 hover:underline font-bold">
+                + Load Sample Geotagged iPhone Capture
+              </button>
+            </div>
+
+            <!-- EXIF Results Box -->
+            <div id="exif-results-container">
+              <div class="p-5 text-center text-slate-500 border border-dashed border-slate-800 rounded-xl text-xs font-mono">
+                Upload a photo or click sample capture to audit hidden camera metadata and GPS coordinates.
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Right: Passive Browser Fingerprinting Audit -->
+        <div class="lg:col-span-6 space-y-4">
+          <div class="p-6 rounded-xl border border-slate-800 bg-slate-900/80 space-y-4">
+            <div class="flex items-center justify-between pb-2 border-b border-slate-800">
+              <h3 class="text-sm font-bold text-white font-mono flex items-center gap-2">
+                <i data-lucide="scan" class="w-4 h-4 text-cyan-400"></i>
+                <span>PASSIVE BROWSER FINGERPRINT SCAN</span>
+              </h3>
+              <button onclick="window.BrowserAudit.runAudit()" class="text-xs font-mono text-cyan-400 hover:underline flex items-center gap-1">
+                <i data-lucide="refresh-cw" class="w-3 h-3"></i>
+                <span>Re-Scan</span>
+              </button>
+            </div>
+
+            <div id="browser-audit-grid"></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================= TAB 5: SENTINELSOC ================= -->
+    <section id="tab-sentinel-soc" class="tab-pane hidden space-y-6">
+      <div class="border-b border-slate-800 pb-4">
+        <h2 class="text-2xl font-bold text-white flex items-center gap-2">
+          <span>🚨 SentinelSOC — Incident Response & Threat Defense Console</span>
+          <span class="text-xs font-mono px-2 py-0.5 rounded bg-rose-950 text-rose-300 border border-rose-800">LIVE DEFENSE SIMULATION</span>
+        </h2>
+        <p class="text-xs text-slate-400 mt-1">Real-time simulation of incoming cyber attacks and interactive multi-step containment playbooks.</p>
+      </div>
+
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-6">
+        <!-- Feed Column -->
+        <div class="lg:col-span-4 space-y-4">
+          <div class="p-4 rounded-xl border border-slate-800 bg-slate-900/80 space-y-3">
+            <div class="flex items-center justify-between text-xs font-mono">
+              <span class="text-slate-400 font-bold uppercase">LIVE THREAT FEED</span>
+              <span class="text-rose-400 flex items-center gap-1">
+                <span class="w-2 h-2 rounded-full bg-rose-500 animate-ping"></span>
+                ACTIVE
+              </span>
+            </div>
+            <div id="soc-incidents-feed" class="space-y-2"></div>
+          </div>
+
+          <!-- Threat Vector Distribution Doughnut Chart -->
+          <div class="p-4 rounded-xl border border-slate-800 bg-slate-900/80 space-y-2">
+            <span class="text-xs font-mono text-slate-400 font-bold uppercase block">Attack Vector Distribution</span>
+            <div class="h-48 relative">
+              <canvas id="threat-chart"></canvas>
+            </div>
+          </div>
+        </div>
+
+        <!-- Incident Details & Playbook Column -->
+        <div class="lg:col-span-8">
+          <div id="soc-incident-details"></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================= TAB 6: DISCLOSESAFE (CVSS V3.1) ================= -->
+    <section id="tab-disclose-safe" class="tab-pane hidden space-y-6">
+      <div class="border-b border-slate-800 pb-4">
+        <h2 class="text-2xl font-bold text-white flex items-center gap-2">
+          <span>🛡️ DiscloseSafe — Official CVSS v3.1 Engine & Ethical VDP</span>
+          <span class="text-xs font-mono px-2 py-0.5 rounded bg-amber-950 text-amber-300 border border-amber-800">FIRST.ORG COMPLIANT</span>
+        </h2>
+        <p class="text-xs text-slate-400 mt-1">Official Common Vulnerability Scoring System (CVSS v3.1) calculator with real-time vector string generation and responsible disclosure reporting.</p>
+      </div>
+
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-6">
+        <!-- CVSS Base Score Matrix (Left 7 cols) -->
+        <div class="lg:col-span-7 space-y-5">
+          <div class="p-6 rounded-xl border border-slate-800 bg-slate-900/80 space-y-5">
+            
+            <!-- Real-time Score Display Header -->
+            <div class="p-4 bg-slate-950 rounded-xl border border-slate-800 flex flex-wrap items-center justify-between gap-3">
+              <div>
+                <span class="text-xs font-mono text-slate-500 block">BASE SEVERITY SCORE:</span>
+                <div class="flex items-baseline gap-2">
+                  <span id="cvss-score-value" class="text-4xl font-extrabold font-mono text-rose-400">9.8</span>
+                  <span class="text-xs font-mono text-slate-500">/ 10.0</span>
+                </div>
+              </div>
+              <div id="cvss-severity-badge" class="px-3 py-1 rounded-full text-xs font-mono font-bold border text-rose-400 border-rose-700 bg-rose-950">
+                CRITICAL
+              </div>
+            </div>
+
+            <!-- Vector String Bar -->
+            <div class="p-3 bg-slate-950 rounded-lg border border-slate-800 flex items-center justify-between gap-2 font-mono text-xs">
+              <span id="cvss-vector-string" class="text-cyan-400 truncate">CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H</span>
+              <button onclick="window.CvssCalculator.copyVector()" class="px-2.5 py-1 bg-slate-800 hover:bg-slate-700 text-slate-300 rounded text-[11px] shrink-0 transition">
+                Copy
+              </button>
+            </div>
+
+            <!-- CVSS Metrics Selectors -->
+            <div class="space-y-4 text-xs font-mono">
+              <!-- AV: Attack Vector -->
+              <div class="p-3 bg-slate-950/60 rounded-lg border border-slate-800">
+                <span class="text-slate-400 font-bold block mb-2">1. ATTACK VECTOR (AV):</span>
+                <div class="grid grid-cols-2 sm:grid-cols-4 gap-2">
+                  <label class="flex items-center gap-1.5 cursor-pointer text-slate-300">
+                    <input type="radio" name="cvss-AV" value="N" checked class="text-cyan-500"> <span>Network (N)</span>
+                  </label>
+                  <label class="flex items-center gap-1.5 cursor-pointer text-slate-300">
+                    <input type="radio" name="cvss-AV" value="A" class="text-cyan-500"> <span>Adjacent (A)</span>
+                  </label>
+                  <label class="flex items-center gap-1.5 cursor-pointer text-slate-300">
+                    <input type="radio" name="cvss-AV" value="L" class="text-cyan-500"> <span>Local (L)</span>
+                  </label>
+                  <label class="flex items-center gap-1.5 cursor-pointer text-slate-300">
+                    <input type="radio" name="cvss-AV" value="P" class="text-cyan-500"> <span>Physical (P)</span>
+                  </label>
+                </div>
+              </div>
+
+              <!-- AC & PR -->
+              <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                <div class="p-3 bg-slate-950/60 rounded-lg border border-slate-800">
+                  <span class="text-slate-400 font-bold block mb-2">2. ATTACK COMPLEXITY (AC):</span>
+                  <div class="flex gap-4">
+                    <label class="flex items-center gap-1.5 cursor-pointer text-slate-300">
+                      <input type="radio" name="cvss-AC" value="L" checked> <span>Low (L)</span>
+                    </label>
+                    <label class="flex items-center gap-1.5 cursor-pointer text-slate-300">
+                      <input type="radio" name="cvss-AC" value="H"> <span>High (H)</span>
+                    </label>
+                  </div>
+                </div>
+
+                <div class="p-3 bg-slate-950/60 rounded-lg border border-slate-800">
+                  <span class="text-slate-400 font-bold block mb-2">3. PRIVILEGES REQUIRED (PR):</span>
+                  <div class="flex gap-3">
+                    <label class="flex items-center gap-1.5 cursor-pointer text-slate-300">
+                      <input type="radio" name="cvss-PR" value="N" checked> <span>None (N)</span>
+                    </label>
+                    <label class="flex items-center gap-1.5 cursor-pointer text-slate-300">
+                      <input type="radio" name="cvss-PR" value="L"> <span>Low (L)</span>
+                    </label>
+                    <label class="flex items-center gap-1.5 cursor-pointer text-slate-300">
+                      <input type="radio" name="cvss-PR" value="H"> <span>High (H)</span>
+                    </label>
+                  </div>
+                </div>
+              </div>
+
+              <!-- UI & Scope -->
+              <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                <div class="p-3 bg-slate-950/60 rounded-lg border border-slate-800">
+                  <span class="text-slate-400 font-bold block mb-2">4. USER INTERACTION (UI):</span>
+                  <div class="flex gap-4">
+                    <label class="flex items-center gap-1.5 cursor-pointer text-slate-300">
+                      <input type="radio" name="cvss-UI" value="N" checked> <span>None (N)</span>
+                    </label>
+                    <label class="flex items-center gap-1.5 cursor-pointer text-slate-300">
+                      <input type="radio" name="cvss-UI" value="R"> <span>Required (R)</span>
+                    </label>
+                  </div>
+                </div>
+
+                <div class="p-3 bg-slate-950/60 rounded-lg border border-slate-800">
+                  <span class="text-slate-400 font-bold block mb-2">5. SCOPE (S):</span>
+                  <div class="flex gap-4">
+                    <label class="flex items-center gap-1.5 cursor-pointer text-slate-300">
+                      <input type="radio" name="cvss-S" value="U" checked> <span>Unchanged (U)</span>
+                    </label>
+                    <label class="flex items-center gap-1.5 cursor-pointer text-slate-300">
+                      <input type="radio" name="cvss-S" value="C"> <span>Changed (C)</span>
+                    </label>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Impact: C, I, A -->
+              <div class="p-3 bg-slate-950/60 rounded-lg border border-slate-800">
+                <span class="text-slate-400 font-bold block mb-2">6. IMPACT METRICS (C / I / A):</span>
+                <div class="grid grid-cols-1 sm:grid-cols-3 gap-3">
+                  <div>
+                    <span class="text-slate-500 block text-[11px] mb-1">Confidentiality (C):</span>
+                    <select onchange="window.CvssCalculator.metrics.C = this.value; window.CvssCalculator.calculate();" class="w-full bg-slate-900 border border-slate-700 rounded px-2 py-1 text-slate-200">
+                      <option value="H" selected>High (H)</option>
+                      <option value="L">Low (L)</option>
+                      <option value="N">None (N)</option>
+                    </select>
+                  </div>
+                  <div>
+                    <span class="text-slate-500 block text-[11px] mb-1">Integrity (I):</span>
+                    <select onchange="window.CvssCalculator.metrics.I = this.value; window.CvssCalculator.calculate();" class="w-full bg-slate-900 border border-slate-700 rounded px-2 py-1 text-slate-200">
+                      <option value="H" selected>High (H)</option>
+                      <option value="L">Low (L)</option>
+                      <option value="N">None (N)</option>
+                    </select>
+                  </div>
+                  <div>
+                    <span class="text-slate-500 block text-[11px] mb-1">Availability (A):</span>
+                    <select onchange="window.CvssCalculator.metrics.A = this.value; window.CvssCalculator.calculate();" class="w-full bg-slate-900 border border-slate-700 rounded px-2 py-1 text-slate-200">
+                      <option value="H" selected>High (H)</option>
+                      <option value="L">Low (L)</option>
+                      <option value="N">None (N)</option>
+                    </select>
+                  </div>
+                </div>
+              </div>
+
+            </div>
+          </div>
+        </div>
+
+        <!-- Vulnerability Disclosure Program (VDP) Report Builder (Right 5 cols) -->
+        <div class="lg:col-span-5 space-y-4">
+          <div class="p-6 rounded-xl border border-slate-800 bg-slate-900/80 space-y-4 shadow-xl">
+            <h3 class="text-sm font-bold text-white font-mono flex items-center gap-2">
+              <i data-lucide="file-text" class="w-4 h-4 text-emerald-400"></i>
+              <span>RESPONSIBLE DISCLOSURE REPORT GENERATOR</span>
+            </h3>
+
+            <div class="space-y-3 text-xs font-mono">
+              <div>
+                <label class="block text-slate-400 mb-1">Finding Title:</label>
+                <input id="vdp-title" type="text" value="Unauthenticated Remote Code Execution in API Gateway" class="w-full bg-slate-950 border border-slate-700 rounded px-3 py-2 text-slate-200 focus:outline-none focus:border-cyan-400" />
+              </div>
+              <div>
+                <label class="block text-slate-400 mb-1">Target Asset / Host:</label>
+                <input id="vdp-asset" type="text" value="https://api.target-firm.internal/v1/auth" class="w-full bg-slate-950 border border-slate-700 rounded px-3 py-2 text-slate-200 focus:outline-none focus:border-cyan-400" />
+              </div>
+              <div>
+                <label class="block text-slate-400 mb-1">CWE Vulnerability Classification:</label>
+                <select id="vdp-cwe" class="w-full bg-slate-950 border border-slate-700 rounded px-3 py-2 text-slate-200 focus:outline-none focus:border-cyan-400">
+                  <option>CWE-89: SQL Injection</option>
+                  <option selected>CWE-94: Improper Control of Generation of Code (Code Injection)</option>
+                  <option>CWE-79: Cross-Site Scripting (XSS)</option>
+                  <option>CWE-287: Improper Authentication</option>
+                  <option>CWE-918: Server-Side Request Forgery (SSRF)</option>
+                </select>
+              </div>
+              <div>
+                <label class="block text-slate-400 mb-1">Remediation Guidance:</label>
+                <textarea id="vdp-remediation" rows="3" class="w-full bg-slate-950 border border-slate-700 rounded px-3 py-2 text-slate-200 focus:outline-none focus:border-cyan-400">Enforce strict input schema validation, isolate backend containers with read-only root filesystems, and rotate active secret keys.</textarea>
+              </div>
+            </div>
+
+            <button onclick="window.CvssCalculator.generateReport()" class="w-full py-2.5 bg-emerald-600 hover:bg-emerald-500 text-white rounded-lg font-mono text-xs font-bold transition flex items-center justify-center gap-2 shadow-lg shadow-emerald-600/20">
+              <i data-lucide="download" class="w-4 h-4"></i>
+              <span>Export Ethical Markdown Report</span>
+            </button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ================= FOOTER ================= -->
+  <footer class="border-t border-slate-800 bg-[#060911] text-xs font-mono text-slate-500 py-6">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col sm:flex-row items-center justify-between gap-4">
+      <div class="flex items-center space-x-2">
+        <span class="w-2 h-2 rounded-full bg-cyan-400"></span>
+        <span class="text-slate-300 font-bold">AEGIS-OS</span>
+        <span>•</span>
+        <span>Built for Pixel Wars X26 (21 Nov 2026)</span>
+      </div>
+      <div>
+        <span>Author: <strong class="text-slate-300">Prince (Roll 044)</strong> • Bosscoder School of Technology</span>
+      </div>
+      <div class="flex items-center space-x-4 text-slate-400">
+        <span>MIT License</span>
+        <span>•</span>
+        <span>Safe Harbor Compliant</span>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Core Application Scripts -->
+  <script src="js/phish-guard.js"></script>
+  <script src="js/password-fortress.js"></script>
+  <script src="js/exif-scrubber.js"></script>
+  <script src="js/browser-audit.js"></script>
+  <script src="js/soc-dashboard.js"></script>
+  <script src="js/cvss-calculator.js"></script>
+  <script src="js/app.js"></script>
+</body>
+</html>
