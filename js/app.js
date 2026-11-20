@@ -14,13 +14,16 @@ class AegisApp {
     this.setupAudio();
     this.setupTerminal();
 
-    // Initialize submodules
+    // Initialize all submodules
     if (window.PhishGuard) window.PhishGuard.init();
     if (window.PasswordFortress) window.PasswordFortress.init();
+    if (window.CryptoLab) window.CryptoLab.init();
     if (window.ExifScrubber) window.ExifScrubber.init();
     if (window.BrowserAudit) window.BrowserAudit.init();
     if (window.SentinelSOC) window.SentinelSOC.init();
+    if (window.ThreatMap) window.ThreatMap.init();
     if (window.CvssCalculator) window.CvssCalculator.init();
+    if (window.DefenderChallenge) window.DefenderChallenge.init();
 
     if (window.lucide) window.lucide.createIcons();
   }
@@ -62,9 +65,14 @@ class AegisApp {
       }
     });
 
-    // Refresh charts if entering SOC tab
-    if (tabId === "sentinel-soc" && window.SentinelSOC && window.SentinelSOC.chart) {
-      setTimeout(() => window.SentinelSOC.chart.resize(), 100);
+    // Refresh charts or canvases if entering specific tabs
+    if (tabId === "sentinel-soc") {
+      if (window.SentinelSOC && window.SentinelSOC.chart) {
+        setTimeout(() => window.SentinelSOC.chart.resize(), 100);
+      }
+      if (window.ThreatMap) {
+        setTimeout(() => window.ThreatMap.resize(), 100);
+      }
     }
 
     if (window.lucide) window.lucide.createIcons();
@@ -140,6 +148,7 @@ class AegisApp {
       response = `
         <div class="text-cyan-400 mb-1">AVAILABLE AEGIS COMMANDS:</div>
         <div class="text-slate-300 space-y-0.5">
+          • <span class="text-yellow-400">challenge</span>: Open Defender Aptitude Challenge & Certificate<br>
           • <span class="text-yellow-400">scan</span>: Run quick browser & environment security audit<br>
           • <span class="text-yellow-400">playbook</span>: Switch to SentinelSOC incident response center<br>
           • <span class="text-yellow-400">pass</span>: Launch CipherFortress entropy engine<br>
@@ -152,6 +161,9 @@ class AegisApp {
       `;
     } else if (cmd === "scan") {
       response = `<span class="text-emerald-400">[AUDIT COMPLETE] Screen: ${window.screen.width}x${window.screen.height} | Timezone: ${Intl.DateTimeFormat().resolvedOptions().timeZone} | Cores: ${navigator.hardwareConcurrency || 4}</span>`;
+    } else if (cmd === "challenge" || cmd === "cert") {
+      this.switchTab("challenge");
+      response = `<span class="text-cyan-400">Navigating to Defender Challenge & Certificate...</span>`;
     } else if (cmd === "playbook" || cmd === "soc") {
       this.switchTab("sentinel-soc");
       response = `<span class="text-cyan-400">Navigating to SentinelSOC...</span>`;

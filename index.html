@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Aegis-OS | Ethical Cybersecurity, Privacy & Threat Defense Playground</title>
-  <meta name="description" content="A comprehensive ethical cybersecurity, digital privacy and cyber-defense simulator built for Pixel Wars X26.">
+  <title>Aegis-OS | Ethical Cybersecurity, Privacy & Threat Defense Suite</title>
+  <meta name="description" content="A comprehensive ethical cybersecurity, digital privacy and threat defense operating platform built for Pixel Wars X26.">
   
   <!-- Tailwind CSS via CDN -->
   <script src="https://cdn.tailwindcss.com"></script>
@@ -95,7 +95,7 @@
       </button>
       <button data-nav-target="cipher-fortress" class="px-3 py-1.5 rounded-md border border-transparent text-slate-400 hover:text-slate-200 hover:bg-slate-900/60 flex items-center space-x-1.5 transition whitespace-nowrap">
         <i data-lucide="key-round" class="w-3.5 h-3.5"></i>
-        <span>🔐 CipherFortress</span>
+        <span>🔐 CipherFortress & Crypto</span>
       </button>
       <button data-nav-target="privacy-shield" class="px-3 py-1.5 rounded-md border border-transparent text-slate-400 hover:text-slate-200 hover:bg-slate-900/60 flex items-center space-x-1.5 transition whitespace-nowrap">
         <i data-lucide="eye-off" class="w-3.5 h-3.5"></i>
@@ -103,11 +103,15 @@
       </button>
       <button data-nav-target="sentinel-soc" class="px-3 py-1.5 rounded-md border border-transparent text-slate-400 hover:text-slate-200 hover:bg-slate-900/60 flex items-center space-x-1.5 transition whitespace-nowrap">
         <i data-lucide="activity" class="w-3.5 h-3.5"></i>
-        <span>🚨 SentinelSOC</span>
+        <span>🚨 SentinelSOC & Threat Map</span>
       </button>
       <button data-nav-target="disclose-safe" class="px-3 py-1.5 rounded-md border border-transparent text-slate-400 hover:text-slate-200 hover:bg-slate-900/60 flex items-center space-x-1.5 transition whitespace-nowrap">
         <i data-lucide="file-code" class="w-3.5 h-3.5"></i>
         <span>🛡️ DiscloseSafe CVSS</span>
+      </button>
+      <button data-nav-target="challenge" class="px-3 py-1.5 rounded-md border border-emerald-500/50 text-emerald-400 hover:bg-emerald-950/40 flex items-center space-x-1.5 transition whitespace-nowrap shadow-sm shadow-emerald-500/20">
+        <i data-lucide="award" class="w-3.5 h-3.5 text-emerald-400"></i>
+        <span>🏆 Defender Challenge & Cert</span>
       </button>
     </nav>
   </header>
@@ -138,9 +142,13 @@
               <i data-lucide="play" class="w-4 h-4"></i>
               <span>Launch PhishGuard Simulator</span>
             </button>
+            <button onclick="window.Aegis.switchTab('challenge')" class="px-5 py-2.5 rounded-lg bg-emerald-600 hover:bg-emerald-500 text-white font-mono text-xs font-bold flex items-center gap-2 shadow-lg shadow-emerald-600/30 transition">
+              <i data-lucide="award" class="w-4 h-4"></i>
+              <span>Take Defender Challenge & Earn Cert</span>
+            </button>
             <button onclick="window.Aegis.switchTab('sentinel-soc')" class="px-5 py-2.5 rounded-lg bg-slate-900 hover:bg-slate-800 text-slate-200 border border-slate-700 font-mono text-xs flex items-center gap-2 transition">
               <i data-lucide="terminal" class="w-4 h-4"></i>
-              <span>Open SentinelSOC Incident Playbook</span>
+              <span>SentinelSOC Live Console</span>
             </button>
           </div>
         </div>
@@ -153,7 +161,7 @@
           </div>
           <div class="p-3 bg-slate-950/60 rounded-lg border border-slate-800/80">
             <div class="text-[11px] font-mono text-slate-500 uppercase">Working Tools</div>
-            <div class="text-xl font-bold font-mono text-emerald-400 mt-1">5 Interactive Labs</div>
+            <div class="text-xl font-bold font-mono text-emerald-400 mt-1">6 Interactive Labs</div>
           </div>
           <div class="p-3 bg-slate-950/60 rounded-lg border border-slate-800/80">
             <div class="text-[11px] font-mono text-slate-500 uppercase">Client-Side Privacy</div>
@@ -166,7 +174,7 @@
         </div>
       </div>
 
-      <!-- Feature Grid: 5 Core Pillars -->
+      <!-- Feature Grid: 6 Core Pillars -->
       <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
         
         <!-- Card 1 -->
@@ -189,9 +197,9 @@
           <div class="w-10 h-10 rounded-lg bg-emerald-950 text-emerald-400 border border-emerald-800 flex items-center justify-center mb-4 group-hover:scale-105 transition">
             <i data-lucide="key-round" class="w-5 h-5"></i>
           </div>
-          <h3 class="text-base font-bold text-white group-hover:text-emerald-300 transition">CipherFortress & Entropy Engine</h3>
+          <h3 class="text-base font-bold text-white group-hover:text-emerald-300 transition">CipherFortress & Web Crypto</h3>
           <p class="text-xs text-slate-400 mt-2 leading-relaxed">
-            Real-time Shannon entropy calculation and live crack-time estimates comparing single CPUs vs 8x NVIDIA RTX 4090 GPU rigs vs Quantum algorithms.
+            Shannon entropy calculation, GPU cluster crack times, Diceware passphrase generator, and native SHA-256 Avalanche Effect visualizer.
           </p>
           <div class="mt-4 text-xs font-mono text-emerald-400 flex items-center gap-1">
             <span>Audit Password Entropy</span>
@@ -219,9 +227,9 @@
           <div class="w-10 h-10 rounded-lg bg-rose-950 text-rose-400 border border-rose-800 flex items-center justify-center mb-4 group-hover:scale-105 transition">
             <i data-lucide="activity" class="w-5 h-5"></i>
           </div>
-          <h3 class="text-base font-bold text-white group-hover:text-rose-300 transition">SentinelSOC Defense Console</h3>
+          <h3 class="text-base font-bold text-white group-hover:text-rose-300 transition">SentinelSOC & Global Threat Map</h3>
           <p class="text-xs text-slate-400 mt-2 leading-relaxed">
-            Simulated SOC alert stream: Ransomware canaries, L7 DDoS floods, and SQL injection probes with interactive remediation playbooks.
+            Animated Canvas world threat arc visualizer, live incident feed (Ransomware, L7 DDoS, SQLi), and interactive tactical response playbooks.
           </p>
           <div class="mt-4 text-xs font-mono text-rose-400 flex items-center gap-1">
             <span>Access SOC Console</span>
@@ -263,7 +271,7 @@
             <input 
               id="terminal-cmd-input" 
               type="text" 
-              placeholder="type 'help', 'scan', 'soc', 'pass'..."
+              placeholder="type 'help', 'scan', 'challenge', 'soc'..."
               class="w-full bg-transparent text-xs font-mono text-white focus:outline-none placeholder-slate-600"
             />
           </div>
@@ -334,7 +342,7 @@
           <span>🔐 CipherFortress — Password & Entropy Intelligence</span>
           <span class="text-xs font-mono px-2 py-0.5 rounded bg-emerald-950 text-emerald-300 border border-emerald-800">REAL-TIME MATH</span>
         </h2>
-        <p class="text-xs text-slate-400 mt-1">Calculates Shannon entropy in bits, simulates crack-time on GPU rigs vs Quantum computers, and generates cryptographic Diceware passphrases.</p>
+        <p class="text-xs text-slate-400 mt-1">Calculates Shannon entropy in bits, simulates crack-time on GPU rigs vs Quantum computers, and visualizes cryptographic hash mechanics.</p>
       </div>
 
       <div class="grid grid-cols-1 lg:grid-cols-12 gap-6">
@@ -395,19 +403,31 @@
             </div>
           </div>
 
-          <!-- Passkey vs Password Explainer -->
-          <div class="p-5 rounded-xl border border-cyan-500/30 bg-cyan-950/20 text-xs space-y-2">
-            <div class="flex items-center gap-2 text-cyan-400 font-mono font-bold">
-              <i data-lucide="fingerprint" class="w-4 h-4"></i>
-              <span>WHY MODERN SECURITY PREFERS PASSKEYS (FIDO2 / WEBAUTHN)</span>
+          <!-- Web Crypto SHA-256 Avalanche Lab -->
+          <div class="p-6 rounded-xl border border-slate-800 bg-slate-900/80 space-y-3">
+            <div class="flex items-center justify-between pb-2 border-b border-slate-800">
+              <h3 class="text-sm font-bold text-white font-mono flex items-center gap-2">
+                <i data-lucide="binary" class="w-4 h-4 text-cyan-400"></i>
+                <span>NATIVE SHA-256 AVALANCHE EFFECT LAB</span>
+              </h3>
+              <span class="text-[10px] font-mono text-cyan-400">WEB CRYPTO API</span>
             </div>
-            <p class="text-slate-300 leading-relaxed">
-              Traditional passwords require transmitting a shared secret to a remote database—vulnerable to credential stuffing, data breaches, and phishing. Passkeys use asymmetric public-key cryptography bound to your device hardware (Touch ID / Face ID / YubiKey), making remote credential theft mathematically impossible.
-            </p>
+            <p class="text-xs text-slate-400">Type below to witness cryptographic hashing and the Avalanche Effect in real time:</p>
+            <input 
+              id="crypto-input" 
+              type="text" 
+              value="PixelWars2026" 
+              class="w-full px-3 py-2 bg-slate-950 border border-slate-700 rounded text-xs font-mono text-emerald-400 focus:outline-none focus:border-cyan-400"
+            />
+            <div class="p-3 bg-slate-950 rounded border border-slate-800 font-mono text-xs">
+              <span class="text-slate-500 text-[10px] block">COMPUTED SHA-256 HASH:</span>
+              <span id="crypto-hash-output" class="text-cyan-300 break-all select-all font-bold">...</span>
+            </div>
+            <div id="crypto-avalanche-diff" class="text-xs font-mono"></div>
           </div>
         </div>
 
-        <!-- Right: Cryptographic Passphrase Generator -->
+        <!-- Right: Cryptographic Passphrase Generator & Passkeys -->
         <div class="lg:col-span-5 space-y-5">
           <div class="p-6 rounded-xl border border-slate-800 bg-slate-900/80 space-y-4">
             <div class="flex items-center justify-between pb-2 border-b border-slate-800">
@@ -437,6 +457,17 @@
                 <span>Copy Passphrase</span>
               </button>
             </div>
+          </div>
+
+          <!-- Passkey vs Password Explainer -->
+          <div class="p-5 rounded-xl border border-cyan-500/30 bg-cyan-950/20 text-xs space-y-2">
+            <div class="flex items-center gap-2 text-cyan-400 font-mono font-bold">
+              <i data-lucide="fingerprint" class="w-4 h-4"></i>
+              <span>WHY MODERN SECURITY PREFERS PASSKEYS (FIDO2 / WEBAUTHN)</span>
+            </div>
+            <p class="text-slate-300 leading-relaxed">
+              Traditional passwords require transmitting a shared secret to a remote database—vulnerable to credential stuffing, data breaches, and phishing. Passkeys use asymmetric public-key cryptography bound to your device hardware (Touch ID / Face ID / YubiKey), making remote credential theft mathematically impossible.
+            </p>
           </div>
         </div>
       </div>
@@ -516,6 +547,23 @@
           <span class="text-xs font-mono px-2 py-0.5 rounded bg-rose-950 text-rose-300 border border-rose-800">LIVE DEFENSE SIMULATION</span>
         </h2>
         <p class="text-xs text-slate-400 mt-1">Real-time simulation of incoming cyber attacks and interactive multi-step containment playbooks.</p>
+      </div>
+
+      <!-- Live Global Threat Attack Map Canvas -->
+      <div class="p-5 rounded-xl border border-slate-800 bg-slate-900/90 space-y-3">
+        <div class="flex items-center justify-between pb-2 border-b border-slate-800">
+          <div class="flex items-center gap-2">
+            <i data-lucide="globe" class="w-4 h-4 text-cyan-400"></i>
+            <span class="text-xs font-mono text-cyan-400 font-bold uppercase">GLOBAL LIVE THREAT ATTACK MAP</span>
+          </div>
+          <div id="threat-map-ticker" class="text-xs font-mono text-slate-300">
+            <span class="inline-block w-2 h-2 rounded-full bg-cyan-400 animate-ping mr-1"></span>
+            Monitoring Global Edge Nodes...
+          </div>
+        </div>
+        <div class="h-64 relative rounded-lg overflow-hidden border border-slate-800 bg-slate-950">
+          <canvas id="threat-map-canvas" class="w-full h-full block"></canvas>
+        </div>
       </div>
 
       <div class="grid grid-cols-1 lg:grid-cols-12 gap-6">
@@ -740,6 +788,21 @@
       </div>
     </section>
 
+    <!-- ================= TAB 7: DEFENDER CHALLENGE & CERT ================= -->
+    <section id="tab-challenge" class="tab-pane hidden space-y-6">
+      <div class="border-b border-slate-800 pb-4">
+        <h2 class="text-2xl font-bold text-white flex items-center gap-2">
+          <span>🏆 Defender Aptitude Challenge & Certificate Engine</span>
+          <span class="text-xs font-mono px-2 py-0.5 rounded bg-emerald-950 text-emerald-300 border border-emerald-800">GAMIFIED EVALUATION</span>
+        </h2>
+        <p class="text-xs text-slate-400 mt-1">Test your cyber defense instincts in a 5-question evaluation and generate an official, downloadable Certified Defender credential.</p>
+      </div>
+
+      <div class="max-w-3xl mx-auto p-6 rounded-2xl border border-slate-800 bg-slate-900/90 shadow-2xl">
+        <div id="challenge-container"></div>
+      </div>
+    </section>
+
   </main>
 
   <!-- ================= FOOTER ================= -->
@@ -765,10 +828,13 @@
   <!-- Core Application Scripts -->
   <script src="js/phish-guard.js"></script>
   <script src="js/password-fortress.js"></script>
+  <script src="js/crypto-lab.js"></script>
   <script src="js/exif-scrubber.js"></script>
   <script src="js/browser-audit.js"></script>
   <script src="js/soc-dashboard.js"></script>
+  <script src="js/threat-map.js"></script>
   <script src="js/cvss-calculator.js"></script>
+  <script src="js/challenge.js"></script>
   <script src="js/app.js"></script>
 </body>
 </html>
