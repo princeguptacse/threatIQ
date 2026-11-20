@@ -13,8 +13,11 @@ class ThreatIQApp {
     this.setupNavigation();
     this.setupAudio();
     this.setupTerminal();
+    this.setupKeyboardShortcuts();
 
     // Initialize all submodules
+    if (window.CyberParticles) window.CyberParticles.init();
+    if (window.ThreatVoice) window.ThreatVoice.init();
     if (window.PhishGuard) window.PhishGuard.init();
     if (window.PasswordFortress) window.PasswordFortress.init();
     if (window.CryptoLab) window.CryptoLab.init();
@@ -28,6 +31,8 @@ class ThreatIQApp {
     if (window.SteganoLab) window.SteganoLab.init();
     if (window.ThreatTriageAI) window.ThreatTriageAI.init();
     if (window.UrlAnalyzer) window.UrlAnalyzer.init();
+    if (window.JwtInspector) window.JwtInspector.init();
+    if (window.AuditReport) window.AuditReport.init();
 
     if (window.lucide) window.lucide.createIcons();
   }
@@ -42,9 +47,70 @@ class ThreatIQApp {
     });
   }
 
+  setupKeyboardShortcuts() {
+    const tabMap = {
+      "1": "overview",
+      "2": "wargame",
+      "3": "ai-triage",
+      "4": "phish-guard",
+      "5": "url-analyzer",
+      "6": "cipher-fortress",
+      "7": "jwt-inspector",
+      "8": "privacy-shield",
+      "9": "steganography",
+      "0": "sentinel-soc"
+    };
+
+    window.addEventListener("keydown", (e) => {
+      // Ignore if typing in an input or textarea
+      if (["INPUT", "TEXTAREA"].includes(document.activeElement.tagName)) {
+        if (e.key === "Escape") document.activeElement.blur();
+        return;
+      }
+
+      if (tabMap[e.key]) {
+        this.switchTab(tabMap[e.key]);
+      } else if (e.key === "/") {
+        e.preventDefault();
+        const termInput = document.getElementById("terminal-cmd-input");
+        if (termInput) {
+          this.switchTab("overview");
+          termInput.focus();
+        }
+      } else if (e.key.toLowerCase() === "m") {
+        const sfxBtn = document.getElementById("sound-toggle-btn");
+        if (sfxBtn) sfxBtn.click();
+      } else if (e.key.toLowerCase() === "v") {
+        const vBtn = document.getElementById("voice-toggle-btn");
+        if (vBtn) vBtn.click();
+      }
+    });
+  }
+
   switchTab(tabId) {
     this.currentTab = tabId;
     this.playSound("click");
+
+    // Announce via Tactical AI Voice if enabled
+    if (window.ThreatVoice && window.ThreatVoice.enabled) {
+      const voiceAnnouncements = {
+        "overview": "Overview dashboard active.",
+        "wargame": "Cyber War Game arena engaged. Red versus Blue active.",
+        "ai-triage": "A I Threat Copilot ready for payload inspection.",
+        "phish-guard": "PhishGuard social engineering lab loaded.",
+        "url-analyzer": "Malicious link and homoglyph de-cloaker ready.",
+        "cipher-fortress": "CipherFortress entropy and cryptographic engine online.",
+        "jwt-inspector": "JSON Web Token security inspector active.",
+        "privacy-shield": "PrivacyShield EXIF metadata scrubber loaded.",
+        "steganography": "Image steganography least significant bit lab online.",
+        "sentinel-soc": "Sentinel SOC defense console and global map active.",
+        "disclose-safe": "CVSS 3.1 responsible disclosure calculator loaded.",
+        "challenge": "Defender challenge evaluation portal ready."
+      };
+      if (voiceAnnouncements[tabId]) {
+        window.ThreatVoice.speak(voiceAnnouncements[tabId]);
+      }
+    }
 
     // Hide all tab panes
     const panes = document.querySelectorAll(".tab-pane");
@@ -93,7 +159,7 @@ class ThreatIQApp {
       }
       this.soundEnabled = !this.soundEnabled;
       toggleBtn.innerHTML = this.soundEnabled 
-        ? `<i data-lucide="volume-2" class="w-4 h-4 text-cyan-400"></i><span class="text-xs font-mono text-cyan-400">HUD SFX ON</span>`
+        ? `<i data-lucide="volume-2" class="w-4 h-4 text-cyan-400"></i><span class="text-xs font-mono text-cyan-400">SFX ON</span>`
         : `<i data-lucide="volume-x" class="w-4 h-4 text-slate-500"></i><span class="text-xs font-mono text-slate-500">SFX OFF</span>`;
       if (window.lucide) window.lucide.createIcons();
       if (this.soundEnabled) this.playSound("beep");
@@ -152,8 +218,10 @@ class ThreatIQApp {
       response = `
         <div class="text-cyan-400 mb-1">AVAILABLE THREATIQ COMMANDS:</div>
         <div class="text-slate-300 space-y-0.5">
+          • <span class="text-yellow-400">report</span>: Generate 1-Click Executive Security Audit & Printable Report<br>
           • <span class="text-yellow-400">battle</span>: Launch Red Team vs Blue Team Cyber War Game<br>
           • <span class="text-yellow-400">triage</span>: Open AI Threat Intelligence Copilot<br>
+          • <span class="text-yellow-400">jwt</span>: Open JSON Web Token Security Inspector<br>
           • <span class="text-yellow-400">stego</span>: Open LSB Steganography Lab<br>
           • <span class="text-yellow-400">url</span>: Open Malicious Link De-Cloaker<br>
           • <span class="text-yellow-400">challenge</span>: Open Defender Aptitude Challenge & Certificate<br>
@@ -166,6 +234,9 @@ class ThreatIQApp {
           • <span class="text-yellow-400">clear</span>: Clear terminal buffer
         </div>
       `;
+    } else if (cmd === "report" || cmd === "audit") {
+      if (window.AuditReport) window.AuditReport.openModal();
+      response = `<span class="text-emerald-400">Generating Executive Digital Posture Report...</span>`;
     } else if (cmd === "scan") {
       response = `<span class="text-emerald-400">[AUDIT COMPLETE] Screen: ${window.screen.width}x${window.screen.height} | Timezone: ${Intl.DateTimeFormat().resolvedOptions().timeZone} | Cores: ${navigator.hardwareConcurrency || 4}</span>`;
     } else if (cmd === "battle" || cmd === "wargame") {
@@ -174,6 +245,9 @@ class ThreatIQApp {
     } else if (cmd === "triage" || cmd === "ai") {
       this.switchTab("ai-triage");
       response = `<span class="text-cyan-400">Navigating to AI Threat Intelligence Copilot...</span>`;
+    } else if (cmd === "jwt") {
+      this.switchTab("jwt-inspector");
+      response = `<span class="text-cyan-400">Navigating to JWT Security Inspector...</span>`;
     } else if (cmd === "stego") {
       this.switchTab("steganography");
       response = `<span class="text-cyan-400">Navigating to Steganography Lab...</span>`;

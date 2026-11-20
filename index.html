@@ -43,7 +43,7 @@
   <!-- Custom CSS -->
   <link rel="stylesheet" href="css/style.css">
 </head>
-<body class="bg-[#090d16] text-slate-100 min-h-screen flex flex-col cyber-grid">
+<body class="bg-[#090d16] text-slate-100 min-h-screen flex flex-col cyber-grid relative">
 
   <!-- ================= TOP HUD & SYSTEM STATUS BAR ================= -->
   <header class="border-b border-slate-800 bg-[#090d16]/90 backdrop-blur-md sticky top-0 z-50">
@@ -57,25 +57,38 @@
         <div>
           <div class="flex items-center space-x-2">
             <span class="font-bold text-lg tracking-wider text-white">threat<span class="text-cyan-400">IQ</span></span>
-            <span class="px-2 py-0.5 rounded text-[10px] font-mono bg-cyan-950/80 text-cyan-300 border border-cyan-800">v3.0 AI-EDITION</span>
+            <span class="px-2 py-0.5 rounded text-[10px] font-mono bg-cyan-950/80 text-cyan-300 border border-cyan-800">v3.5 TITAN</span>
           </div>
           <div class="text-[10px] font-mono text-slate-500 flex items-center space-x-2">
             <span class="inline-block w-1.5 h-1.5 rounded-full bg-emerald-400 animate-ping"></span>
             <span>SYSTEM INTEGRITY: 100%</span>
             <span>•</span>
-            <span class="text-slate-400">DEFCON 4 (DEFENSIVE)</span>
+            <span class="text-slate-400">DEFCON 4</span>
           </div>
         </div>
       </div>
 
-      <!-- Action & Hackathon Badges -->
-      <div class="flex items-center space-x-3">
-        <button id="sound-toggle-btn" class="px-3 py-1.5 rounded-lg border border-slate-800 bg-slate-900/80 hover:bg-slate-800 flex items-center space-x-1.5 transition">
-          <i data-lucide="volume-x" class="w-4 h-4 text-slate-500"></i>
-          <span class="text-xs font-mono text-slate-500">SFX OFF</span>
+      <!-- Action & Tactical Audio / Voice / Report Badges -->
+      <div class="flex items-center space-x-2 sm:space-x-3">
+        <!-- Voice Assistant Toggle -->
+        <button id="voice-toggle-btn" class="px-2.5 py-1.5 rounded-lg border border-slate-800 bg-slate-900/80 hover:bg-slate-800 flex items-center space-x-1 transition" title="Toggle Tactical AI Voice Synthesizer">
+          <i data-lucide="mic-off" class="w-4 h-4 text-slate-500"></i>
+          <span class="text-xs font-mono text-slate-500 hidden sm:inline">VOICE OFF</span>
         </button>
 
-        <div class="hidden md:flex items-center px-3 py-1.5 rounded-lg border border-cyan-500/30 bg-cyan-950/30 font-mono text-xs text-cyan-300">
+        <!-- SFX Toggle -->
+        <button id="sound-toggle-btn" class="px-2.5 py-1.5 rounded-lg border border-slate-800 bg-slate-900/80 hover:bg-slate-800 flex items-center space-x-1 transition" title="Toggle HUD Sound Effects">
+          <i data-lucide="volume-x" class="w-4 h-4 text-slate-500"></i>
+          <span class="text-xs font-mono text-slate-500 hidden sm:inline">SFX OFF</span>
+        </button>
+
+        <!-- 1-Click Executive Audit Report -->
+        <button onclick="window.AuditReport.openModal()" class="px-3 py-1.5 rounded-lg border border-emerald-500/50 bg-emerald-950/40 hover:bg-emerald-900/50 text-emerald-400 font-mono text-xs flex items-center gap-1.5 transition shadow-sm shadow-emerald-500/20">
+          <i data-lucide="file-check-2" class="w-3.5 h-3.5 text-emerald-400"></i>
+          <span>Posture Report</span>
+        </button>
+
+        <div class="hidden lg:flex items-center px-3 py-1.5 rounded-lg border border-cyan-500/30 bg-cyan-950/30 font-mono text-xs text-cyan-300">
           <i data-lucide="award" class="w-3.5 h-3.5 mr-1.5 text-cyan-400"></i>
           <span>PIXEL WARS X26</span>
         </div>
@@ -83,7 +96,7 @@
 
     </div>
 
-    <!-- Navigation Tabs (Expanded with All 10 Power Tools) -->
+    <!-- Navigation Tabs (Complete 11 Modules) -->
     <nav class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 border-t border-slate-800/80 flex space-x-1 sm:space-x-2 overflow-x-auto py-2 text-xs font-mono">
       <button data-nav-target="overview" class="px-3 py-1.5 rounded-md border text-cyan-400 border-cyan-400 bg-cyan-950/30 flex items-center space-x-1.5 transition whitespace-nowrap">
         <i data-lucide="layout-dashboard" class="w-3.5 h-3.5"></i>
@@ -107,33 +120,48 @@
       </button>
       <button data-nav-target="cipher-fortress" class="px-3 py-1.5 rounded-md border border-transparent text-slate-400 hover:text-slate-200 hover:bg-slate-900/60 flex items-center space-x-1.5 transition whitespace-nowrap">
         <i data-lucide="key-round" class="w-3.5 h-3.5"></i>
-        <span>🔐 CipherFortress & Crypto</span>
+        <span>🔐 CipherFortress</span>
+      </button>
+      <button data-nav-target="jwt-inspector" class="px-3 py-1.5 rounded-md border border-transparent text-slate-400 hover:text-slate-200 hover:bg-slate-900/60 flex items-center space-x-1.5 transition whitespace-nowrap">
+        <i data-lucide="shield" class="w-3.5 h-3.5"></i>
+        <span>🔑 JWT Inspector</span>
       </button>
       <button data-nav-target="privacy-shield" class="px-3 py-1.5 rounded-md border border-transparent text-slate-400 hover:text-slate-200 hover:bg-slate-900/60 flex items-center space-x-1.5 transition whitespace-nowrap">
         <i data-lucide="eye-off" class="w-3.5 h-3.5"></i>
-        <span>🕵️ PrivacyShield (EXIF)</span>
+        <span>🕵️ PrivacyShield</span>
       </button>
       <button data-nav-target="steganography" class="px-3 py-1.5 rounded-md border border-transparent text-slate-400 hover:text-slate-200 hover:bg-slate-900/60 flex items-center space-x-1.5 transition whitespace-nowrap">
         <i data-lucide="image" class="w-3.5 h-3.5"></i>
-        <span>🖼️ Steganography Lab</span>
+        <span>🖼️ Steganography</span>
       </button>
       <button data-nav-target="sentinel-soc" class="px-3 py-1.5 rounded-md border border-transparent text-slate-400 hover:text-slate-200 hover:bg-slate-900/60 flex items-center space-x-1.5 transition whitespace-nowrap">
         <i data-lucide="activity" class="w-3.5 h-3.5"></i>
-        <span>🚨 SentinelSOC & Map</span>
+        <span>🚨 SentinelSOC</span>
       </button>
       <button data-nav-target="disclose-safe" class="px-3 py-1.5 rounded-md border border-transparent text-slate-400 hover:text-slate-200 hover:bg-slate-900/60 flex items-center space-x-1.5 transition whitespace-nowrap">
         <i data-lucide="file-code" class="w-3.5 h-3.5"></i>
-        <span>🛡️ DiscloseSafe CVSS</span>
+        <span>🛡️ CVSS 3.1</span>
       </button>
       <button data-nav-target="challenge" class="px-3 py-1.5 rounded-md border border-emerald-500/50 text-emerald-400 hover:bg-emerald-950/40 flex items-center space-x-1.5 transition whitespace-nowrap shadow-sm shadow-emerald-500/20">
         <i data-lucide="award" class="w-3.5 h-3.5 text-emerald-400"></i>
-        <span>🏆 Defender Challenge & Cert</span>
+        <span>🏆 Challenge</span>
       </button>
     </nav>
   </header>
 
+  <!-- Keyboard Shortcuts Helper Pill -->
+  <div class="hidden md:flex justify-center items-center py-1 bg-slate-950/80 border-b border-slate-800 text-[10px] font-mono text-slate-500 gap-3">
+    <span>💡 Keyboard HUD: Press <kbd class="px-1.5 py-0.5 rounded bg-slate-900 border border-slate-700 text-cyan-400">1-9</kbd> to jump modules</span>
+    <span>•</span>
+    <span><kbd class="px-1.5 py-0.5 rounded bg-slate-900 border border-slate-700 text-cyan-400">/</kbd> to open CLI</span>
+    <span>•</span>
+    <span><kbd class="px-1.5 py-0.5 rounded bg-slate-900 border border-slate-700 text-cyan-400">V</kbd> for AI Voice</span>
+    <span>•</span>
+    <span><kbd class="px-1.5 py-0.5 rounded bg-slate-900 border border-slate-700 text-cyan-400">M</kbd> for SFX</span>
+  </div>
+
   <!-- ================= MAIN CONTENT CONTAINER ================= -->
-  <main class="flex-grow max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6 w-full">
+  <main class="flex-grow max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6 w-full relative z-10">
 
     <!-- ================= TAB 1: OVERVIEW & HUB ================= -->
     <section id="tab-overview" class="tab-pane space-y-8">
@@ -144,13 +172,13 @@
         <div class="max-w-3xl space-y-4">
           <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-cyan-950/80 border border-cyan-500/40 text-cyan-300 font-mono text-xs">
             <span class="w-2 h-2 rounded-full bg-cyan-400 animate-pulse"></span>
-            <span>CATEGORY: CYBERSECURITY, PRIVACY & ETHICAL HACKING</span>
+            <span>PIXEL WARS X26 • CYBERSECURITY, PRIVACY & ETHICAL HACKING</span>
           </div>
           <h1 class="text-3xl sm:text-5xl font-extrabold tracking-tight text-white leading-tight">
             Safer Digital Behavior Through <span class="text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 via-sky-300 to-emerald-400">AI Cyber Intelligence</span>.
           </h1>
           <p class="text-slate-300 text-sm sm:text-base leading-relaxed">
-            threatIQ is an AI-powered, 100% client-side ethical cyber defense operating platform. Simulate Red Team vs Blue Team cyber wars, analyze live log payloads with our AI Copilot, inspect lookalike phishing domains, extract hidden EXIF geotags from photos, and decode steganographic payloads.
+            threatIQ is an AI-powered, 100% client-side ethical cyber defense operating platform. Simulate Red Team vs Blue Team cyber wars, analyze live log payloads with our AI Copilot, inspect lookalike phishing domains, extract hidden EXIF geotags from photos, audit JWT security, and decode steganographic payloads.
           </p>
 
           <div class="pt-2 flex flex-wrap items-center gap-3">
@@ -162,9 +190,9 @@
               <i data-lucide="bot" class="w-4 h-4"></i>
               <span>Launch AI Threat Copilot</span>
             </button>
-            <button onclick="window.ThreatIQ.switchTab('challenge')" class="px-5 py-2.5 rounded-lg bg-emerald-600 hover:bg-emerald-500 text-white font-mono text-xs font-bold flex items-center gap-2 shadow-lg shadow-emerald-600/30 transition">
-              <i data-lucide="award" class="w-4 h-4"></i>
-              <span>Defender Challenge & Cert</span>
+            <button onclick="window.AuditReport.openModal()" class="px-5 py-2.5 rounded-lg bg-emerald-600 hover:bg-emerald-500 text-white font-mono text-xs font-bold flex items-center gap-2 shadow-lg shadow-emerald-600/30 transition">
+              <i data-lucide="file-check-2" class="w-4 h-4"></i>
+              <span>Generate Executive Audit</span>
             </button>
           </div>
         </div>
@@ -177,7 +205,7 @@
           </div>
           <div class="p-3 bg-slate-950/60 rounded-lg border border-slate-800/80">
             <div class="text-[11px] font-mono text-slate-500 uppercase">Interactive Labs</div>
-            <div class="text-xl font-bold font-mono text-emerald-400 mt-1">10 Power Tools</div>
+            <div class="text-xl font-bold font-mono text-emerald-400 mt-1">11 Power Tools</div>
           </div>
           <div class="p-3 bg-slate-950/60 rounded-lg border border-slate-800/80">
             <div class="text-[11px] font-mono text-slate-500 uppercase">Client-Side Privacy</div>
@@ -190,7 +218,7 @@
         </div>
       </div>
 
-      <!-- Feature Grid: 10 Core Pillars -->
+      <!-- Feature Grid: 11 Core Pillars -->
       <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
         
         <!-- Card 1: War Game -->
@@ -238,7 +266,22 @@
           </div>
         </div>
 
-        <!-- Card 4: Steganography -->
+        <!-- Card 4: JWT Inspector -->
+        <div onclick="window.ThreatIQ.switchTab('jwt-inspector')" class="glass-panel p-6 rounded-xl hover:border-purple-400/50 transition cursor-pointer group">
+          <div class="w-10 h-10 rounded-lg bg-purple-950 text-purple-400 border border-purple-800 flex items-center justify-center mb-4 group-hover:scale-105 transition">
+            <i data-lucide="shield" class="w-5 h-5"></i>
+          </div>
+          <h3 class="text-base font-bold text-white group-hover:text-purple-300 transition">JWT & Token Security Inspector</h3>
+          <p class="text-xs text-slate-400 mt-2 leading-relaxed">
+            Inspect JSON Web Tokens for critical signature bypass exploits (alg: none), exposed credentials/PII, and non-expiring session keys.
+          </p>
+          <div class="mt-4 text-xs font-mono text-purple-400 flex items-center gap-1">
+            <span>Audit Auth Tokens</span>
+            <i data-lucide="arrow-right" class="w-3.5 h-3.5 group-hover:translate-x-1 transition"></i>
+          </div>
+        </div>
+
+        <!-- Card 5: Steganography -->
         <div onclick="window.ThreatIQ.switchTab('steganography')" class="glass-panel p-6 rounded-xl hover:border-emerald-400/50 transition cursor-pointer group">
           <div class="w-10 h-10 rounded-lg bg-emerald-950 text-emerald-400 border border-emerald-800 flex items-center justify-center mb-4 group-hover:scale-105 transition">
             <i data-lucide="image" class="w-5 h-5"></i>
@@ -249,21 +292,6 @@
           </p>
           <div class="mt-4 text-xs font-mono text-emerald-400 flex items-center gap-1">
             <span>Encode / Decode Secrets</span>
-            <i data-lucide="arrow-right" class="w-3.5 h-3.5 group-hover:translate-x-1 transition"></i>
-          </div>
-        </div>
-
-        <!-- Card 5: URL Analyzer -->
-        <div onclick="window.ThreatIQ.switchTab('url-analyzer')" class="glass-panel p-6 rounded-xl hover:border-amber-400/50 transition cursor-pointer group">
-          <div class="w-10 h-10 rounded-lg bg-amber-950 text-amber-400 border border-amber-800 flex items-center justify-center mb-4 group-hover:scale-105 transition">
-            <i data-lucide="link" class="w-5 h-5"></i>
-          </div>
-          <h3 class="text-base font-bold text-white group-hover:text-amber-300 transition">URL & Homoglyph De-Cloaker</h3>
-          <p class="text-xs text-slate-400 mt-2 leading-relaxed">
-            Detects IDN homoglyphs, non-ASCII Punycode disguises, high-risk TLDs, open redirects, and nested subdomain traps before you click.
-          </p>
-          <div class="mt-4 text-xs font-mono text-amber-400 flex items-center gap-1">
-            <span>Scan Link Deception</span>
             <i data-lucide="arrow-right" class="w-3.5 h-3.5 group-hover:translate-x-1 transition"></i>
           </div>
         </div>
@@ -279,7 +307,7 @@
               <span class="text-[10px] font-mono text-slate-500">TYPE 'HELP'</span>
             </div>
             <div id="terminal-history" class="h-28 overflow-y-auto space-y-1 pr-1 font-mono text-xs text-slate-400">
-              <div class="text-slate-500">// threatIQ CLI initialized. Ready for command input.</div>
+              <div class="text-slate-500">// threatIQ CLI initialized. Type 'report', 'battle', 'jwt' or 'help'.</div>
             </div>
           </div>
           <div class="mt-3 flex items-center gap-2 border-t border-slate-800 pt-2">
@@ -287,7 +315,7 @@
             <input 
               id="terminal-cmd-input" 
               type="text" 
-              placeholder="type 'help', 'battle', 'triage', 'stego'..."
+              placeholder="type 'help', 'battle', 'triage', 'jwt'..."
               class="w-full bg-transparent text-xs font-mono text-white focus:outline-none placeholder-slate-600"
             />
           </div>
@@ -339,7 +367,6 @@
       </div>
 
       <div class="grid grid-cols-1 lg:grid-cols-12 gap-6">
-        <!-- Input Column -->
         <div class="lg:col-span-6 space-y-4">
           <div class="p-6 rounded-xl border border-slate-800 bg-slate-900/80 space-y-4">
             <div>
@@ -352,7 +379,6 @@
               ></textarea>
             </div>
 
-            <!-- Quick Presets -->
             <div>
               <span class="block text-[11px] font-mono text-slate-500 uppercase mb-2">Or Test Real Attack Presets:</span>
               <div class="flex flex-wrap gap-2 text-xs font-mono">
@@ -366,9 +392,48 @@
           </div>
         </div>
 
-        <!-- Output Column -->
         <div class="lg:col-span-6">
           <div id="triage-output-container"></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================= TAB: JWT INSPECTOR ================= -->
+    <section id="tab-jwt-inspector" class="tab-pane hidden space-y-6">
+      <div class="border-b border-slate-800 pb-4">
+        <h2 class="text-2xl font-bold text-white flex items-center gap-2">
+          <span>🔑 JWT & Session Token Security Inspector</span>
+          <span class="text-xs font-mono px-2 py-0.5 rounded bg-purple-950 text-purple-300 border border-purple-800">CRYPTOGRAPHIC AUDITOR</span>
+        </h2>
+        <p class="text-xs text-slate-400 mt-1">Audit JSON Web Tokens for critical signature bypass exploits (alg: none), exposed credentials in payload, and expiration tampering.</p>
+      </div>
+
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-6">
+        <div class="lg:col-span-6 space-y-4">
+          <div class="p-6 rounded-xl border border-slate-800 bg-slate-900/80 space-y-4">
+            <div>
+              <label class="block text-xs font-mono uppercase text-slate-400 font-bold mb-2">Paste JWT Token String:</label>
+              <textarea 
+                id="jwt-input" 
+                rows="4" 
+                placeholder="eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9..." 
+                class="w-full p-3 bg-slate-950 border border-slate-700 rounded-lg text-xs font-mono text-purple-300 focus:outline-none focus:border-cyan-400 break-all"
+              ></textarea>
+            </div>
+
+            <div>
+              <span class="block text-[11px] font-mono text-slate-500 uppercase mb-2">Load Known Vulnerability Samples:</span>
+              <div class="flex flex-wrap gap-2 text-xs font-mono">
+                <button onclick="window.JwtInspector.loadSample('algNone')" class="px-2.5 py-1 bg-slate-800 hover:bg-slate-700 text-rose-300 rounded border border-rose-800/40">🚨 'alg: none' Exploit</button>
+                <button onclick="window.JwtInspector.loadSample('leakedPii')" class="px-2.5 py-1 bg-slate-800 hover:bg-slate-700 text-amber-300 rounded border border-amber-800/40">⚠️ Leaked Passwords & PII</button>
+                <button onclick="window.JwtInspector.loadSample('hardened')" class="px-2.5 py-1 bg-slate-800 hover:bg-slate-700 text-emerald-300 rounded border border-emerald-800/40">✓ Hardened RS256 Token</button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="lg:col-span-6">
+          <div id="jwt-output-container"></div>
         </div>
       </div>
     </section>
@@ -424,7 +489,6 @@
       </div>
 
       <div class="grid grid-cols-1 lg:grid-cols-12 gap-6">
-        <!-- Encoder Column -->
         <div class="lg:col-span-6 space-y-4">
           <div class="p-6 rounded-xl border border-slate-800 bg-slate-900/80 space-y-4">
             <h3 class="text-sm font-bold text-white font-mono flex items-center gap-2">
@@ -453,7 +517,6 @@
           </div>
         </div>
 
-        <!-- Decoder Column -->
         <div class="lg:col-span-6 space-y-4">
           <div class="p-6 rounded-xl border border-slate-800 bg-slate-900/80 space-y-4">
             <h3 class="text-sm font-bold text-white font-mono flex items-center gap-2">
@@ -957,8 +1020,33 @@
 
   </main>
 
+  <!-- ================= EXECUTIVE AUDIT REPORT MODAL ================= -->
+  <div id="audit-report-modal" class="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/80 backdrop-blur-md hidden">
+    <div class="bg-slate-900 border border-slate-700 max-w-3xl w-full max-h-[90vh] rounded-2xl flex flex-col shadow-2xl overflow-hidden">
+      <div class="p-4 bg-slate-950 border-b border-slate-800 flex items-center justify-between">
+        <div class="flex items-center gap-2 font-mono text-xs font-bold text-white">
+          <i data-lucide="file-check" class="w-4 h-4 text-emerald-400"></i>
+          <span>EXECUTIVE DIGITAL POSTURE REPORT</span>
+        </div>
+        <div class="flex items-center gap-2">
+          <button onclick="window.AuditReport.printReport()" class="px-3 py-1 bg-cyan-600 hover:bg-cyan-500 text-white rounded text-xs font-mono font-bold transition flex items-center gap-1.5">
+            <i data-lucide="printer" class="w-3.5 h-3.5"></i>
+            <span>Print / PDF</span>
+          </button>
+          <button onclick="window.AuditReport.copyMarkdown()" class="px-3 py-1 bg-slate-800 hover:bg-slate-700 text-slate-300 rounded text-xs font-mono transition">
+            Copy Markdown
+          </button>
+          <button onclick="window.AuditReport.closeModal()" class="w-7 h-7 rounded-lg bg-slate-800 hover:bg-slate-700 text-slate-400 hover:text-white flex items-center justify-center text-xs font-bold ml-2">
+            ✕
+          </button>
+        </div>
+      </div>
+      <div id="audit-report-content" class="p-6 overflow-y-auto"></div>
+    </div>
+  </div>
+
   <!-- ================= FOOTER ================= -->
-  <footer class="border-t border-slate-800 bg-[#060911] text-xs font-mono text-slate-500 py-6">
+  <footer class="border-t border-slate-800 bg-[#060911] text-xs font-mono text-slate-500 py-6 relative z-10">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col sm:flex-row items-center justify-between gap-4">
       <div class="flex items-center space-x-2">
         <span class="w-2 h-2 rounded-full bg-cyan-400"></span>
@@ -977,10 +1065,13 @@
     </div>
   </footer>
 
-  <!-- Core Application Scripts -->
+  <!-- Core Application Scripts (Complete 15-script Architecture) -->
+  <script src="js/particles.js"></script>
+  <script src="js/voice-assistant.js"></script>
   <script src="js/phish-guard.js"></script>
   <script src="js/password-fortress.js"></script>
   <script src="js/crypto-lab.js"></script>
+  <script src="js/jwt-inspector.js"></script>
   <script src="js/exif-scrubber.js"></script>
   <script src="js/browser-audit.js"></script>
   <script src="js/soc-dashboard.js"></script>
@@ -991,6 +1082,7 @@
   <script src="js/steganography.js"></script>
   <script src="js/ai-triage.js"></script>
   <script src="js/url-analyzer.js"></script>
+  <script src="js/audit-report.js"></script>
   <script src="js/app.js"></script>
 </body>
 </html>
