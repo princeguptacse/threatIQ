@@ -208,7 +208,7 @@ class DefenderChallenge {
     ctx.fillStyle = "#38bdf8";
     ctx.font = "bold 13px 'JetBrains Mono', monospace";
     ctx.textAlign = "center";
-    ctx.fillText("AEGIS-OS • PIXEL WARS X26 HACKATHON", 400, 70);
+    ctx.fillText("AEGISX • PIXEL WARS X26 HACKATHON", 400, 70);
 
     // Main Title
     ctx.fillStyle = "#ffffff";
@@ -236,7 +236,7 @@ class DefenderChallenge {
     // Subtitle
     ctx.fillStyle = "#94a3b8";
     ctx.font = "14px 'Plus Jakarta Sans', sans-serif";
-    ctx.fillText("has successfully completed the Aegis-OS Threat Detection & Ethical Defense Evaluation", 400, 280);
+    ctx.fillText("has successfully completed the AegisX Threat Detection & Ethical Defense Evaluation", 400, 280);
     ctx.fillText("demonstrating mastery over Phishing Inspection, Password Entropy, and EXIF Privacy.", 400, 305);
 
     // Score & XP Badge
@@ -258,7 +258,7 @@ class DefenderChallenge {
     ctx.fillText("DATE ISSUED: 2026-11-21 (IST)", 50, 480);
 
     ctx.textAlign = "right";
-    ctx.fillText("ISSUING PLATFORM: AEGIS-OS DEFENSE SUITE", 750, 460);
+    ctx.fillText("ISSUING PLATFORM: AEGISX DEFENSE SUITE", 750, 460);
     ctx.fillText("SAFE HARBOR COMPLIANT • DEFCON-4", 750, 480);
   }
 

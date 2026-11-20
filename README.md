@@ -1,4 +1,4 @@
-# 🛡️ Aegis-OS — Ethical Cybersecurity, Privacy & Threat Defense Suite
+# 🛡️ AegisX — AI-Powered Cybersecurity & Digital Safety Platform
 
 > **Official Entry for Pixel Wars X26 — 24-Hour Remote Hackathon (21 November 2026)**  
 > **Category:** Cybersecurity, Privacy & Ethical Hacking  
@@ -11,7 +11,7 @@
 
 > *"Create interfaces that educate, inform, or support safer digital behaviour. Ideas include cyber-awareness portals, security product websites, vulnerability-reporting interfaces, password-safety tools, or simulated security dashboards. Keep demonstrations ethical and safe; do not build tools intended to compromise real systems."*
 
-**Aegis-OS** directly addresses all five suggested domains in a unified, high-tech, responsive cybersecurity defense operating platform:
+**AegisX** directly addresses all five suggested domains in a unified, high-tech, responsive cybersecurity defense operating platform:
 
 1. **Cyber-Awareness Portal (`🎣 PhishGuard Lab`)**: Real-world interactive attack inspection (Business Email Compromise, Cyrillic Punycode homoglyphs, and Quishing QR code traps) with red flag diagnostics and live scoring.
 2. **Password-Safety Tool (`🔐 CipherFortress`)**: Real-time Shannon entropy calculation (bits), offline GPU cluster (8x RTX 4090) vs. Quantum Shor/Grover crack-time estimations, dictionary pattern scanners, and cryptographic Diceware passphrase generator.
@@ -79,12 +79,12 @@
 
 ## 💻 How to Run Locally
 
-You can run Aegis-OS locally with any standard HTTP server:
+You can run AegisX locally with any standard HTTP server:
 
 ```bash
 # Clone the repository
-git clone https://github.com/prince-044/aegis-os.git
-cd aegis-os
+git clone https://github.com/prince-044/aegisx.git
+cd aegisx
 
 # Run using Python built-in server
 python3 -m http.server 8000
@@ -96,7 +96,7 @@ Open `http://localhost:8000` in your web browser.
 
 ## 🌐 Instant Live Deployment Guide
 
-Aegis-OS is pre-configured for instant deployment:
+AegisX is pre-configured for instant deployment:
 
 ### Option A: GitHub Pages
 1. Push this folder to a GitHub repository:
@@ -104,18 +104,18 @@ Aegis-OS is pre-configured for instant deployment:
    git init
    git add .
    git commit -m "feat: initial commit for Pixel Wars X26"
-   git remote add origin https://github.com/<your-username>/aegis-os.git
+   git remote add origin https://github.com/<your-username>/aegisx.git
    git push -u origin main
    ```
 2. In GitHub, go to **Settings > Pages > Source > Deploy from a branch (`main` / root)**.
-3. Your live URL will be active in seconds: `https://<your-username>.github.io/aegis-os/`.
+3. Your live URL will be active in seconds: `https://<your-username>.github.io/aegisx/`.
 
 ### Option B: Vercel / Netlify
-1. Drag and drop the `aegis-os` folder directly into [Vercel Dashboard](https://vercel.com) or [Netlify Drop](https://app.netlify.com/drop).
+1. Drag and drop the `aegisx` folder directly into [Vercel Dashboard](https://vercel.com) or [Netlify Drop](https://app.netlify.com/drop).
 2. It deploys automatically as a static site with 100% uptime.
 
 ---
 
 ## ⚖️ Ethical Hacking & Safe Harbor Statement
 
-Aegis-OS was designed and developed strictly for educational, defensive, and security awareness purposes. It contains no exploit payloads, does not perform unauthorized network reconnaissance, and adheres to ISO/IEC 29147 standards for responsible vulnerability disclosure.
+AegisX was designed and developed strictly for educational, defensive, and security awareness purposes. It contains no exploit payloads, does not perform unauthorized network reconnaissance, and adheres to ISO/IEC 29147 standards for responsible vulnerability disclosure.
