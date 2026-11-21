@@ -1,10 +1,5 @@
 # 🛡️ threatIQ — Personal Digital Safety & Privacy Hub
 
-> **Official Entry for Pixel Wars X26 — 24-Hour Remote Hackathon (21 November 2026)**  
-> **Category:** Cybersecurity, Privacy & Ethical Hacking  
-> **Author:** Prince (Roll: 044) | Bosscoder School of Technology  
-> **License:** MIT Open Source  
-
 ---
 
 ## 🎯 What is threatIQ?
