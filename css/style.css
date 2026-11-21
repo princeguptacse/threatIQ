@@ -1,13 +1,9 @@
-@import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300;400;500;600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;600&display=swap');
 
 :root {
-  --bg-primary: #090d16;
+  --bg-primary: #0a0f1d;
   --bg-secondary: #0f172a;
-  --bg-card: rgba(15, 23, 42, 0.75);
-  --border-color: rgba(56, 189, 248, 0.18);
-  --cyan-glow: rgba(6, 182, 212, 0.35);
-  --emerald-glow: rgba(16, 185, 129, 0.35);
-  --rose-glow: rgba(244, 63, 94, 0.35);
+  --border-color: rgba(56, 189, 248, 0.15);
 }
 
 body {
@@ -21,49 +17,26 @@ body {
   font-family: 'JetBrains Mono', monospace;
 }
 
-/* Cyber Background Grid */
+/* Friendly Cyber Grid */
 .cyber-grid {
-  background-size: 40px 40px;
+  background-size: 32px 32px;
   background-image: 
-    linear-gradient(to right, rgba(56, 189, 248, 0.04) 1px, transparent 1px),
-    linear-gradient(to bottom, rgba(56, 189, 248, 0.04) 1px, transparent 1px);
+    linear-gradient(to right, rgba(56, 189, 248, 0.03) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(56, 189, 248, 0.03) 1px, transparent 1px);
 }
 
-.radar-sweep {
-  position: relative;
-  overflow: hidden;
-}
-
-.radar-sweep::after {
-  content: '';
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  width: 100%;
-  height: 100%;
-  border-radius: 50%;
-  transform: translate(-50%, -50%);
-  background: conic-gradient(from 0deg, transparent 0deg, rgba(6, 182, 212, 0.15) 60deg, transparent 61deg);
-  animation: radarRotate 4s linear infinite;
-  pointer-events: none;
-}
-
-@keyframes radarRotate {
-  from { transform: translate(-50%, -50%) rotate(0deg); }
-  to { transform: translate(-50%, -50%) rotate(360deg); }
-}
-
-/* Glassmorphism Cards */
-.glass-panel {
-  background: rgba(15, 23, 42, 0.75);
+/* Clean, Spacious Cards */
+.card-clean {
+  background: rgba(15, 23, 42, 0.85);
   backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
-  border: 1px solid var(--border-color);
-  box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.5);
+  transition: all 0.25s ease;
 }
 
-.glass-panel:hover {
-  border-color: rgba(56, 189, 248, 0.4);
+.card-clean:hover {
+  border-color: rgba(56, 189, 248, 0.35);
+  transform: translateY(-2px);
 }
 
 /* Custom Scrollbar */
@@ -73,7 +46,7 @@ body {
 }
 
 ::-webkit-scrollbar-track {
-  background: #090d16;
+  background: #0a0f1d;
 }
 
 ::-webkit-scrollbar-thumb {
@@ -83,36 +56,4 @@ body {
 
 ::-webkit-scrollbar-thumb:hover {
   background: #38bdf8;
-}
-
-/* Print Styles for Executive Audit Report */
-@media print {
-  body {
-    background: #ffffff !important;
-    color: #000000 !important;
-  }
-  header, nav, footer, #cyber-particle-canvas, .tab-pane, button, #audit-report-modal-backdrop {
-    display: none !important;
-  }
-  #audit-report-modal {
-    display: block !important;
-    position: static !important;
-    padding: 0 !important;
-    background: transparent !important;
-  }
-  #audit-report-modal > div {
-    max-width: 100% !important;
-    border: none !important;
-    box-shadow: none !important;
-    background: #ffffff !important;
-    color: #000000 !important;
-  }
-  #audit-report-content {
-    color: #000000 !important;
-  }
-  #audit-report-content * {
-    color: #1e293b !important;
-    background: transparent !important;
-    border-color: #cbd5e1 !important;
-  }
 }
